@@ -1,4 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Project_Work_Libreria.Database;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<BookShopContext>();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<BookShopContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,10 +25,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Book}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

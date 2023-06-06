@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project_Work_Libreria.Models;
 
 namespace Project_Work_Libreria.Database
 {
-    public class BookShopContext : DbContext
+    public class BookShopContext : IdentityDbContext<IdentityUser>
     {
 
         public DbSet<Book> Book { get; set; }

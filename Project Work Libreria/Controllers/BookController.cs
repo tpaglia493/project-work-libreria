@@ -79,7 +79,7 @@ namespace Project_Work_Libreria.Controllers
                 {
 
                     bookToModify.Title = modifiedBook.Title;
-                    bookToModify.Author= modifiedBook.Author;
+                    bookToModify.Author = modifiedBook.Author;
                     bookToModify.Description = modifiedBook.Description;
                     bookToModify.ImgSource = modifiedBook.ImgSource;
                     bookToModify.Price = modifiedBook.Price;
@@ -90,7 +90,7 @@ namespace Project_Work_Libreria.Controllers
                 }
                 else
                 {
-                    return NotFound("Pizza Not Found!");
+                    return NotFound("Libro non trovato!");
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace Project_Work_Libreria.Controllers
                 }
                 else
                 {
-                    return NotFound("Pizza Not Found!");
+                    return NotFound("Libro non trovato!");
 
                 }
             }
