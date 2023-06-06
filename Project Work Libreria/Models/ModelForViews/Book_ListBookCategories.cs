@@ -2,5 +2,7 @@
 {
     public class Book_ListBookCategories
     {
+        public Book? BookForRelation { get; set; }
+        public List<BookCategory>? BookCategories { get; set; }
     }
 }
