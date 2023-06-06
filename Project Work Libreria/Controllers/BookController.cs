@@ -43,5 +43,23 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            using (BookShopContext db = new BookShopContext())
+            {
+                Book? bookToModify = db.Book.Where(book => book.Id == id).FirstOrDefault();
+
+                if (bookToModify != null)
+                {
+                    return View("Update", bookToModify);
+                }
+                else
+                {
+
+                    return NotFound("Articolo da modifcare inesistente!");
+                }
+            }
+        }
     }
 }
