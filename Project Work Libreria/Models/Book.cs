@@ -27,6 +27,8 @@ namespace Project_Work_Libreria.Models
         public int BookCategoryId { get; set; }
         public BookCategory Category { get; set; }
 
+
+        public List<PurchaseData> ListPurchaseData { get; set; } 
         public Book() { }
 
         public Book(string imgSource, string title, string author, string description, float price)
