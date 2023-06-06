@@ -73,7 +73,7 @@ namespace Project_Work_Libreria.Controllers
 
             using (BookShopContext db = new BookShopContext())
             {
-                Book? bookToModify = db.Book.Where(books => book.Id == id).FirstOrDefault();
+                Book? bookToModify = db.Book.Where(books => books.Id == id).FirstOrDefault();
 
                 if (bookToModify != null)
                 {
