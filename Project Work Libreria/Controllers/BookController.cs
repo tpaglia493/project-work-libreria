@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project_Work_Libreria.Database;
 using Project_Work_Libreria.Models;
 using System.Data;
@@ -16,6 +17,31 @@ namespace Project_Work_Libreria.Controllers
                 List<Book> books = db.Book.ToList<Book>();
                 return View("Index", books);
             }
+        }
+
+
+        public IActionResult Details(int id)
+        {
+            using (BookShopContext db = new BookShopContext())
+
+            {
+                Book? bookDetails = db.Book.Where(book => book.Id == id).Include(book => book.Category).FirstOrDefault();
+
+
+
+                if (bookDetails != null)
+                {
+                    return View("Details", bookDetails);
+                }
+                else
+                {
+                    return NotFound($"L'articolo con id {id} non è stato trovato!");
+                }
+
+
+
+            }
+
         }
 
         [Authorize(Roles = "ADMIN")]
