@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Project_Work_Libreria.Database;
 using Project_Work_Libreria.Models;
+using System.Data;
 
 namespace Project_Work_Libreria.Controllers
 {
     public class BookController : Controller
     {
+        [Authorize(Roles = "ADMIN,USER")]
         public IActionResult Index()
         {
             using (BookShopContext db = new BookShopContext())
@@ -15,6 +18,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -25,6 +29,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Book newBook)
@@ -43,6 +48,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -62,6 +68,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Book modifiedBook)
@@ -95,6 +102,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
