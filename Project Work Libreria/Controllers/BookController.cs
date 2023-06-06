@@ -9,6 +9,8 @@ namespace Project_Work_Libreria.Controllers
 {
     public class BookController : Controller
     {
+        //*********************** GET LISTA DI LIBRI CON LA LORO CATEGORIA **************************
+
         [Authorize(Roles = "ADMIN,USER")]
         public IActionResult Index()
         {
@@ -22,6 +24,8 @@ namespace Project_Work_Libreria.Controllers
                 return View("Index", books);
             }
         }
+
+        //******************************* CREARE UN LIBRO ***********************************
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
@@ -53,29 +57,8 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
-        public IActionResult Details(int id)
-        {
-            using (BookShopContext db = new BookShopContext())
 
-            {
-                Book? bookDetails = db.Book.Where(book => book.Id == id).Include(book => book.Category).FirstOrDefault();
-
-
-
-                if (bookDetails != null)
-                {
-                    return View("Details", bookDetails);
-                }
-                else
-                {
-                    return NotFound($"L'articolo con id {id} non è stato trovato!");
-                }
-
-
-
-            }
-
-        }
+        //******************************* MODIFICARE UN LIBRO ***********************************
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
@@ -130,6 +113,7 @@ namespace Project_Work_Libreria.Controllers
                 }
             }
         }
+        //******************************* ELIMINARE UN LIBRO ***********************************
 
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
@@ -156,7 +140,30 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        //******************************* DETTAGLI DI UN LIBRO ***********************************
+        public IActionResult Details(int id)
+        {
+            using (BookShopContext db = new BookShopContext())
 
+            {
+                Book? bookDetails = db.Book.Where(book => book.Id == id).Include(book => book.Category).FirstOrDefault();
+
+
+
+                if (bookDetails != null)
+                {
+                    return View("Details", bookDetails);
+                }
+                else
+                {
+                    return NotFound($"L'articolo con id {id} non è stato trovato!");
+                }
+
+
+
+            }
+
+        }
 
     }
 }
