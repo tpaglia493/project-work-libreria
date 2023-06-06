@@ -11,7 +11,7 @@ namespace Project_Work_Libreria.Controllers
     {
         //*********************** GET LISTA DI LIBRI CON LA LORO CATEGORIA **************************
 
-        [Authorize(Roles = "ADMIN,USER")]
+        //[Authorize(Roles = "ADMIN,USER")]
         public IActionResult Index()
         {
             using (BookShopContext db = new BookShopContext())

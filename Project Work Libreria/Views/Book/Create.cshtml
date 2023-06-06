@@ -1,0 +1,53 @@
+﻿@using Project_Work_Libreria.Models.ModelForViews;
+@model Book_ListBookCategories
+
+<div class="container">
+    <h2 class="mb-3">Aggiungi libro</h2>
+
+    <form asp-controller="Book" asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label asp-for="BookForRelation.Title" class="form-label">Titolo</label>
+            <input asp-for="BookForRelation.Title" type="text" class="form-control" required>
+            <span asp-validation-for="BookForRelation.Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BookForRelation.Author" class="form-label">Autore</label>
+            <input asp-for="BookForRelation.Author" type="text" class="form-control" required>
+            <span asp-validation-for="BookForRelation.Author" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <strong>Categoria:</strong>
+            <select asp-for="BookForRelation.BookCategoryId" title="ProductCategory" rows="10" class="d-block w-100">
+                <option value=""></option>
+                @foreach (BookCategory category in Model.BookCategories)
+                {
+                    <option value="@category.Id" selected="@(Model.BookForRelation.BookCategoryId == category.Id ? "selected" : null)">@category.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BookForRelation.ImgSource" class="form-label">URL Immagine</label>
+            <input asp-for="BookForRelation.ImgSource" type="text" class="form-control" required>
+            <span asp-validation-for="BookForRelation.ImgSource" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BookForRelation.Description" class="form-label">Descrizione</label>
+            <textarea asp-for="BookForRelation.Description" rows="10" class="form-control"></textarea>
+            <span asp-validation-for="BookForRelation.Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BookForRelation.Price" class="form-label">Prezzo</label>
+            <input asp-for="BookForRelation.Price" type="text" class="form-control" required>
+            <span asp-validation-for="BookForRelation.Price" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salva</button>
+    </form>
+</div>
+
