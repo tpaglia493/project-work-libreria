@@ -61,5 +61,39 @@ namespace Project_Work_Libreria.Controllers
                 }
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, Book modifiedBook)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update", modifiedBook);
+            }
+
+            using (BookShopContext db = new BookShopContext())
+            {
+                Book? bookToModify = db.Book.Where(books => book.Id == id).FirstOrDefault();
+
+                if (bookToModify != null)
+                {
+
+                    bookToModify.Title = modifiedBook.Title;
+                    bookToModify.Author= modifiedBook.Author;
+                    bookToModify.Description = modifiedBook.Description;
+                    bookToModify.ImgSource = modifiedBook.ImgSource;
+                    bookToModify.Price = modifiedBook.Price;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("Pizza Not Found!");
+                }
+            }
+        }
+
     }
 }
