@@ -11,6 +11,8 @@ namespace Project_Work_Libreria.Database
         public DbSet<Book> Book { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
 
+        public DbSet<PurchaseData> PurchaseDatas { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=BookShopDB;Integrated Security=True;TrustServerCertificate=True");
