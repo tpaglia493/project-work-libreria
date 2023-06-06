@@ -95,5 +95,31 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            using (BookShopContext db = new BookShopContext())
+            {
+                Book? bookToDelete = db.Book.Where(book => book.Id == id).FirstOrDefault();
+
+                if (bookToDelete != null)
+                {
+                    db.Remove(bookToDelete);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("Pizza Not Found!");
+
+                }
+            }
+        }
+
+
+
     }
 }
