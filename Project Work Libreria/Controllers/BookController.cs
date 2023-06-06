@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_Work_Libreria.Database;
 using Project_Work_Libreria.Models;
+using Project_Work_Libreria.Models.ModelForViews;
 using System.Data;
 
 namespace Project_Work_Libreria.Controllers
@@ -33,8 +34,12 @@ namespace Project_Work_Libreria.Controllers
         {
             using (BookShopContext db = new BookShopContext())
             {
+                List<BookCategory> bookCategories = db.Categories.ToList();
+                Book_ListBookCategories modelForView = new();
                 Book newBook = new Book();
-                return View("Create", newBook);
+                modelForView.BookCategories = bookCategories;
+                modelForView.BookForRelation = newBook;
+                return View("Create", modelForView);
             }
         }
 
@@ -80,7 +85,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
-       // [Authorize(Roles = "ADMIN")]
+        // [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Book modifiedBook)
