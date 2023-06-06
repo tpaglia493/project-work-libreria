@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Work_Libreria.Database;
 
@@ -11,9 +12,11 @@ using Project_Work_Libreria.Database;
 namespace Project_Work_Libreria.Migrations
 {
     [DbContext(typeof(BookShopContext))]
-    partial class BookShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230606154638_addPurchaseDataRelationship")]
+    partial class addPurchaseDataRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -298,7 +301,7 @@ namespace Project_Work_Libreria.Migrations
 
                     b.HasIndex("PurchasedBookId");
 
-                    b.ToTable("PurchaseDatas");
+                    b.ToTable("purchaseDatas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
