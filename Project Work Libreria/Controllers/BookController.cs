@@ -15,7 +15,33 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            using (BookShopContext db = new BookShopContext())
+            {
+                Book newBook = new Book();
+                return View("Create", newBook);
+            }
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Book newBook)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", newBook);
+            }
+
+            using (BookShopContext db = new BookShopContext())
+            {
+                db.Book.Add(newBook);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
 
     }
 }
