@@ -19,6 +19,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
+        //ciao
 
         public IActionResult Details(int id)
         {
