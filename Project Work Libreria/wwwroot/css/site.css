@@ -11,8 +11,13 @@ html {
   min-height: 100%;
 }
 
+.navbar {
+    background-image: linear-gradient(to right, #FFFFFF 0%, #98c8c8 100%);
+}
+
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    
 }
 
 /*bottoni larghi*/
@@ -74,4 +79,7 @@ body {
 
 .card {
     justify-content: center;
+    
+    
 }
+
