@@ -50,24 +50,39 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
-        [Authorize(Roles = "ADMIN")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Book newBook)
-        {
-            if (!ModelState.IsValid)
+            [Authorize(Roles = "ADMIN")]
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public IActionResult Create(Book_ListBookCategories data)
             {
-                return View("Create", newBook);
+                if (!ModelState.IsValid)
+                {
+                    using (BookShopContext db = new BookShopContext())
+                    {
+                        List<BookCategory> bookCategories = db.Categories.ToList();
+                        data.BookCategories = bookCategories;
+
+                        return View("Create", data);
+                    }
+                }
+                using (BookShopContext db = new BookShopContext())
+                {
+                    Book bookToCreate = new Book();
+                    bookToCreate.Title = data.BookForRelation.Title;
+                    bookToCreate.Description = data.BookForRelation.Description;
+                    bookToCreate.Author = data.BookForRelation.Author;
+                    bookToCreate.ImgSource = data.BookForRelation.ImgSource;
+                    bookToCreate.Price = data.BookForRelation.Price;
+                    bookToCreate.BookCategoryId = data.BookForRelation.BookCategoryId;
+
+                    db.Book.Add(bookToCreate);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+
             }
 
-            using (BookShopContext db = new BookShopContext())
-            {
-                db.Book.Add(newBook);
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-        }
 
 
         //******************************* MODIFICARE UN LIBRO ***********************************
