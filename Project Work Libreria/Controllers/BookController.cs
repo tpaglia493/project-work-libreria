@@ -91,17 +91,20 @@ namespace Project_Work_Libreria.Controllers
             using (BookShopContext db = new BookShopContext())
             {
                 Book? bookToModify = db.Book.Where(book => book.Id == id).FirstOrDefault();
-
+                Book_ListBookCategories model = new Book_ListBookCategories();
+                model.Book = bookToModify;
+                List<BookCategory> bookCategories = db.Categories.ToList();
+                model.BookCategories = bookCategories;
+                
                 if (bookToModify != null)
                 {
-                    return View("Update", bookToModify);
+                    return View("Update", model);
                 }
                 else
                 {
-                    List<BookCategory> bookCategories = db.Categories.ToList();
-                    Book_ListBookCategories model = new Book_ListBookCategories();
-                    List<PurchaseData> purchaseDatas = new List<PurchaseData>();
-                    model.BookCategories = bookCategories;
+            
+                 
+                    
                     return View(model);
 
 

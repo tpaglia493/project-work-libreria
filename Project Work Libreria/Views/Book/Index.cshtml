@@ -25,12 +25,16 @@
 
                         </div>
                 <div class="card-body d-flex justify-content-evenly">
-                    <span class="material-icons-outlined bg-danger rounded">
-                    <a href="#" class="card-link text-dark">delete</a>
-                    </span>
-                    <span class="material-icons-outlined bg-warning rounded">
-                    <a href="#" class="card-link text-dark">edit</a>
-                     </span>
+                   @* <span class="material-icons-outlined bg-info rounded">
+                         <a href="@Url.Action("Update", "Book", new { id = modelForView.Book.Id})> edit</a>
+
+                    </span>*@
+
+                     <a href="@Url.Action("Update", "Book", new {id = modelForView.Book.Id})" class="btn btn-outline-warning mt-3 " role="button">Update</a>
+
+
+                     <a href="@Url.Action("Delete", "Book", new {id = modelForView.Book.Id})" class="btn btn-outline-warning mt-3 " role="button">Delete</a>
+                    
                 </div>
             </div>
             }
