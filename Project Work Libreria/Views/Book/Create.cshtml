@@ -1,7 +1,7 @@
 ﻿@using Project_Work_Libreria.Models.ModelForViews;
 @model Book_ListBookCategories
 
-<div class="container">
+<div class="container login">
     <div class="row">
         <div class="col-lg-6 col-md-8 col-sm-6 m-auto mt-5">
     <h1 class="mb-3">Aggiungi libro</h1>
@@ -29,7 +29,7 @@
                     <option value="@category.Id" selected="@(Model.BookForRelation.BookCategoryId == category.Id ? "selected" : null)">@category.Name</option>
                 }
             </select>
-        </div>
+        </div> 
 
         <div class="mb-3">
             <label asp-for="BookForRelation.ImgSource" class="form-label">URL Immagine</label>
