@@ -33,7 +33,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
-        //******************************* CREARE UN LIBRO ***********************************
+        //******************************* CREARE UN LIBRO ***********************************//
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
@@ -160,8 +160,10 @@ namespace Project_Work_Libreria.Controllers
         {
             using (BookShopContext db = new BookShopContext())
             {
+                
                 Book? bookToDelete = db.Book.Where(book => book.Id == id).FirstOrDefault();
-
+              
+              
                 if (bookToDelete != null)
                 {
                     db.Remove(bookToDelete);

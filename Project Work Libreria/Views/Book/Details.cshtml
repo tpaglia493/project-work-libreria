@@ -1,0 +1,39 @@
+﻿@model Book
+
+
+<div class="container  mt-5">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex  ">
+                <h1 class="mt-3 mb-3">Dettagli della Pizza</h1>
+            </div>
+            <div class="mb-4">
+                <img class="rounded-4" src="@Model.ImgSource" width="280" alt="Immagine @Model.Title">
+            </div>
+            <h3>
+                Nome libro:
+            </h3>
+
+            <p>  @Model.Title</p>
+            <h3>
+                Descrizione:
+            </h3>
+
+            <p>  @Model.Description</p>
+
+            <p>
+                <strong>Categoria:</strong>
+                @if (Model.Category != null)
+                {
+                    @Model.Category.Name
+                }
+                else
+                {
+                    <span>Nessuna categoria associata</span>
+                }
+            </p>
+        </div>
+    </div>
+
+</div>
