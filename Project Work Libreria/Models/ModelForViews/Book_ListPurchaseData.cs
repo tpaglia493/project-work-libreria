@@ -2,8 +2,10 @@
 {
     public class Book_ListPurchaseData
     {
-        public Book PurchasedBook { get; set; }
-        public List<PurchaseData> purchaseDatas { get; set; }
+        public Book? PurchasedBook { get; set; }
+        public List<PurchaseData>? purchaseDatas { get; set; }
+
+
 
 
     }

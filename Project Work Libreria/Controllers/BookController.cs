@@ -67,17 +67,10 @@ namespace Project_Work_Libreria.Controllers
             }
             using (BookShopContext db = new BookShopContext())
             {
-                Book bookToCreate = new Book();
-                bookToCreate.Title = data.BookForRelation.Title;
-                bookToCreate.Description = data.BookForRelation.Description;
-                bookToCreate.Author = data.BookForRelation.Author;
-                bookToCreate.ImgSource = data.BookForRelation.ImgSource;
-                bookToCreate.Price = data.BookForRelation.Price;
-                bookToCreate.BookCategoryId = data.BookForRelation.BookCategoryId;
-                bookToCreate.AvailableCopies = data.BookForRelation.AvailableCopies;
 
 
-                db.Book.Add(bookToCreate);
+
+                db.Book.Add(data.BookForRelation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -4,5 +4,7 @@
     {
         public Book? BookForRelation { get; set; }
         public List<BookCategory>? BookCategories { get; set; }
+
+        public PurchaseData? purchaseData { get; set; }
     }
 }
