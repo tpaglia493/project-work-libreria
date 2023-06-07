@@ -50,38 +50,40 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
-            [Authorize(Roles = "ADMIN")]
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public IActionResult Create(Book_ListBookCategories data)
+        [Authorize(Roles = "ADMIN")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Book_ListBookCategories data)
+        {
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
-                {
-                    using (BookShopContext db = new BookShopContext())
-                    {
-                        List<BookCategory> bookCategories = db.Categories.ToList();
-                        data.BookCategories = bookCategories;
-
-                        return View("Create", data);
-                    }
-                }
                 using (BookShopContext db = new BookShopContext())
                 {
-                    Book bookToCreate = new Book();
-                    bookToCreate.Title = data.BookForRelation.Title;
-                    bookToCreate.Description = data.BookForRelation.Description;
-                    bookToCreate.Author = data.BookForRelation.Author;
-                    bookToCreate.ImgSource = data.BookForRelation.ImgSource;
-                    bookToCreate.Price = data.BookForRelation.Price;
-                    bookToCreate.BookCategoryId = data.BookForRelation.BookCategoryId;
+                    List<BookCategory> bookCategories = db.Categories.ToList();
+                    data.BookCategories = bookCategories;
 
-                    db.Book.Add(bookToCreate);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return View("Create", data);
                 }
-
-
             }
+            using (BookShopContext db = new BookShopContext())
+            {
+                Book bookToCreate = new Book();
+                bookToCreate.Title = data.BookForRelation.Title;
+                bookToCreate.Description = data.BookForRelation.Description;
+                bookToCreate.Author = data.BookForRelation.Author;
+                bookToCreate.ImgSource = data.BookForRelation.ImgSource;
+                bookToCreate.Price = data.BookForRelation.Price;
+                bookToCreate.BookCategoryId = data.BookForRelation.BookCategoryId;
+                bookToCreate.AvailableCopies = data.BookForRelation.AvailableCopies;
+
+
+                db.Book.Add(bookToCreate);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+
+        }
 
 
 
