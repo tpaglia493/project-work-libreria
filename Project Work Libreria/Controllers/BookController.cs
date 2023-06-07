@@ -43,9 +43,11 @@ namespace Project_Work_Libreria.Controllers
             {
                 List<BookCategory> bookCategories = db.Categories.ToList();
                 Book_ListBookCategories modelForView = new();
+                List<PurchaseData> purchaseDatas = new List<PurchaseData>();
                 Book newBook = new Book();
                 modelForView.BookCategories = bookCategories;
                 modelForView.Book = newBook;
+                modelForView.Book.PurchaseDatas = purchaseDatas;    
                 return View("Create", modelForView);
             }
         }
@@ -96,8 +98,14 @@ namespace Project_Work_Libreria.Controllers
                 }
                 else
                 {
+                    List<BookCategory> bookCategories = db.Categories.ToList();
+                    Book_ListBookCategories model = new Book_ListBookCategories();
+                    List<PurchaseData> purchaseDatas = new List<PurchaseData>();
+                    model.BookCategories = bookCategories;
+                    return View(model);
 
-                    return NotFound("Articolo da modifcare inesistente!");
+
+
                 }
             }
         }
@@ -105,11 +113,16 @@ namespace Project_Work_Libreria.Controllers
         // [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, Book modifiedBook)
+        public IActionResult Update(int id, Book_ListBookCategories modifiedBook)
         {
             if (!ModelState.IsValid)
             {
-                return View("Update", modifiedBook);
+                using (BookShopContext db = new BookShopContext())
+                {
+                    List<BookCategory> categories = db.Categories.ToList();
+                    modifiedBook.BookCategories = categories;
+                    return View("Update", modifiedBook);
+                }
             }
 
             using (BookShopContext db = new BookShopContext())
@@ -119,11 +132,11 @@ namespace Project_Work_Libreria.Controllers
                 if (bookToModify != null)
                 {
 
-                    bookToModify.Title = modifiedBook.Title;
-                    bookToModify.Author = modifiedBook.Author;
-                    bookToModify.Description = modifiedBook.Description;
-                    bookToModify.ImgSource = modifiedBook.ImgSource;
-                    bookToModify.Price = modifiedBook.Price;
+                    bookToModify.Title = modifiedBook.Book.Title;
+                    bookToModify.Author = modifiedBook.Book.Author;
+                    bookToModify.Description = modifiedBook.Book.Description;
+                    bookToModify.ImgSource = modifiedBook.Book.ImgSource;
+                    bookToModify.Price = modifiedBook.Book.Price;
 
                     db.SaveChanges();
                     return RedirectToAction("Index");

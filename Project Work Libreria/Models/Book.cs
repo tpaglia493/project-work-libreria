@@ -29,6 +29,14 @@ namespace Project_Work_Libreria.Models
         // IMPOSTAZIONE RELAZIONE 1-N CON CATEGORIA
         public int? BookCategoryId { get; set; }
         public BookCategory? Category { get; set; }
+
+
+        public List<PurchaseData>? PurchaseDatas { get; set; }
+
+
+
+     
+
         public Book() { }
 
         public Book(string imgSource, string title, string author, string description, float price, int? availableCopies)
