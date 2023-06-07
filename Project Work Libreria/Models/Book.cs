@@ -23,15 +23,18 @@ namespace Project_Work_Libreria.Models
         [Range(0, float.MaxValue)]
         public float Price { get; set; }
 
+        [Range(0, int.MaxValue)]
+        public int? AvailableCopies { get; set; }
+
         //TODO: IMPOSTAZIONE RELAZIONE 1-N CON CATEGORIA
         public int BookCategoryId { get; set; }
         public BookCategory Category { get; set; }
 
 
-        public List<PurchaseData> ListPurchaseData { get; set; } 
+        public List<PurchaseData> ListPurchaseData { get; set; }
         public Book() { }
 
-        public Book(string imgSource, string title, string author, string description, float price)
+        public Book(string imgSource, string title, string author, string description, float price, int? availableCopies)
         {
 
             ImgSource = imgSource;
@@ -39,6 +42,7 @@ namespace Project_Work_Libreria.Models
             Author = author;
             Description = description;
             Price = price;
+            AvailableCopies = availableCopies;
         }
     }
 }
