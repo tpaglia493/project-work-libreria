@@ -11,7 +11,6 @@ namespace Project_Work_Libreria.Database
         public DbSet<Book> Book { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
 
-        public DbSet<PurchaseData> PurchaseDatas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

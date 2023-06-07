@@ -10,18 +10,18 @@
         <div class="col">
             @foreach(Book_ListBookCategories modelForView in Model){
             <div class="card shadow" style="width: 18rem;">
-                <img src="@modelForView.BookForRelation.ImgSource" class="card-img-top" alt="ladra di libri">
+                <img src="@modelForView.Book.ImgSource" class="card-img-top" alt="ladra di libri">
                 <div class="card-body">
-                    <h5 class="card-title">@modelForView.BookForRelation.Title</h5>
+                    <h5 class="card-title">@modelForView.Book.Title</h5>
         
                 </div>
                 <ul class="list-group list-group-flush">
                     <p class="ps-2 pe-2 pt-2">
-                      @modelForView.BookForRelation.Description
+                      @modelForView.Book.Description
                     </p>
                 </ul>
                         <div class="card-body">
-                            <h3>@modelForView.BookForRelation.Category.Name</h3>
+                            <h3>@modelForView.Book.Category.Name</h3>
 
                         </div>
                 <div class="card-body d-flex justify-content-evenly">

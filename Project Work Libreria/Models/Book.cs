@@ -26,12 +26,10 @@ namespace Project_Work_Libreria.Models
         [Range(0, int.MaxValue)]
         public int? AvailableCopies { get; set; }
 
-        //TODO: IMPOSTAZIONE RELAZIONE 1-N CON CATEGORIA
-        public int BookCategoryId { get; set; }
-        public BookCategory Category { get; set; }
+        // IMPOSTAZIONE RELAZIONE 1-N CON CATEGORIA
+        public int? BookCategoryId { get; set; }
+        public BookCategory? Category { get; set; }
 
-
-        public List<PurchaseData> ListPurchaseData { get; set; }
         public Book() { }
 
         public Book(string imgSource, string title, string author, string description, float price, int? availableCopies)

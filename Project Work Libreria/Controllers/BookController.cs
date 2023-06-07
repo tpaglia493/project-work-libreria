@@ -23,7 +23,7 @@ namespace Project_Work_Libreria.Controllers
                 foreach (Book book in db.Book)
                 {
                     Book_ListBookCategories modelForView = new();
-                    modelForView.BookForRelation = book;
+                    modelForView.Book = book;
                     modelForView.BookCategories = bookCategories;
                     listOfModels.Add(modelForView);
 
@@ -45,7 +45,7 @@ namespace Project_Work_Libreria.Controllers
                 Book_ListBookCategories modelForView = new();
                 Book newBook = new Book();
                 modelForView.BookCategories = bookCategories;
-                modelForView.BookForRelation = newBook;
+                modelForView.Book = newBook;
                 return View("Create", modelForView);
             }
         }
@@ -70,7 +70,7 @@ namespace Project_Work_Libreria.Controllers
 
 
 
-                db.Book.Add(data.BookForRelation);
+                db.Book.Add(data.Book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

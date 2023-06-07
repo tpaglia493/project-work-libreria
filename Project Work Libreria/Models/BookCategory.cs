@@ -12,7 +12,7 @@
         public BookCategory(string name)
         {
             Name = name;
-            Books = new List<Book>();
+            Books = new();
         }
     }
 }
