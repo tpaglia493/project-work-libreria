@@ -15,14 +15,21 @@ namespace Project_Work_Libreria.Controllers
         //[Authorize(Roles = "ADMIN,USER")]
         public IActionResult Index()
         {
-            using (BookShopContext db = new BookShopContext())
+            using (BookShopContext db = new())
             {
-                List<Book> books = db.Book.ToList<Book>();
-                foreach (Book book in books)
+                //TODO: REFACTORING USANDO .include()
+                List<BookCategory> bookCategories = db.Categories.ToList();
+                List<Book_ListBookCategories> listOfModels = new();
+                foreach (Book book in db.Book)
                 {
-                    db.Book.Include(book => book.Category);
+                    Book_ListBookCategories modelForView = new();
+                    modelForView.BookForRelation = book;
+                    modelForView.BookCategories = bookCategories;
+                    listOfModels.Add(modelForView);
+
                 }
-                return View("Index", books);
+
+                return View("Index", listOfModels);
             }
         }
 
