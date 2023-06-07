@@ -7,9 +7,9 @@
 
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col">
+        <div class="col-4">
             @foreach(Book_ListBookCategories modelForView in Model){
-            <div class="card shadow" style="width: 18rem;">
+            <div class="card shadow">
                 <img src="@modelForView.Book.ImgSource" class="card-img-top" alt="ladra di libri">
                 <div class="card-body">
                     <h5 class="card-title">@modelForView.Book.Title</h5>
