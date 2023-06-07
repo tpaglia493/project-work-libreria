@@ -10,17 +10,20 @@
         <div class="col">
             @foreach(Book_ListBookCategories modelForView in Model){
             <div class="card shadow" style="width: 18rem;">
-                <img src="https://m.media-amazon.com/images/I/513I8IpVwTL.jpg" class="card-img-top" alt="ladra di libri">
+                <img src="@modelForView.BookForRelation.ImgSource" class="card-img-top" alt="ladra di libri">
                 <div class="card-body">
                     <h5 class="card-title">@modelForView.BookForRelation.Title</h5>
         
                 </div>
                 <ul class="list-group list-group-flush">
                     <p class="ps-2 pe-2 pt-2">
-                        È un romanzo storico che parla di una ragazzina di nome Liesel Meminger che vive nel 1939 nella Germania nazista con la sua famiglia adottiva.
-                        Liesel non sa né leggere né scrivere, ma grazie a Hans, il suo padre adottivo scoprirà il suo più grande amore: i libri.
+                      @modelForView.BookForRelation.Description
                     </p>
                 </ul>
+                        <div class="card-body">
+                            <h3>@modelForView.BookForRelation.Category.Name</h3>
+
+                        </div>
                 <div class="card-body d-flex justify-content-evenly">
                     <span class="material-icons-outlined bg-danger rounded">
                     <a href="#" class="card-link text-dark">delete</a>
