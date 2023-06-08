@@ -92,7 +92,20 @@ body {
 
 }
 
-.container {
-   
+.bianco {
+    color: white
 }
 
+main {
+    background: url(https://www.sns.it/sites/default/files/2021-10/jaredd-craig-HH4WBGNyltc-unsplash.jpg);
+}
+
+.borders {
+   
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    
+
+}
+
+.foot

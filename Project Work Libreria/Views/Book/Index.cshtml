@@ -2,14 +2,14 @@
 @using Project_Work_Libreria.Models.ModelForViews;
 
 <div class="main">
-    <h1 class="text-center mt-4">La tua libreria</h1>
+    <h1 class="text-center mb-0 bianco">La tua libreria</h1>
     
 
 <div class="container mt-5 mb-5">
     <div class="row">
         
             @foreach(Book_ListBookCategories modelForView in Model){
-            <div class="card shadow col-4 mx-2 mb-2">
+            <div class="card shadow mx-2 mb-2 col-4">
                 <img src="@modelForView.Book.ImgSource" class="card-img-top" alt="libri">
                 <div class="card-body">
                     <h5 class="card-title">@modelForView.Book.Title</h5>
