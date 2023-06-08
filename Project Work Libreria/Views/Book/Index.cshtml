@@ -7,16 +7,16 @@
 
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-4">
+        
             @foreach(Book_ListBookCategories modelForView in Model){
-            <div class="card shadow">
-                <img src="@modelForView.Book.ImgSource" class="card-img-top" alt="ladra di libri">
+            <div class="card shadow col-4 mx-2 mb-2">
+                <img src="@modelForView.Book.ImgSource" class="card-img-top" alt="libri">
                 <div class="card-body">
                     <h5 class="card-title">@modelForView.Book.Title</h5>
         
                 </div>
                 <ul class="list-group list-group-flush">
-                    <p class="ps-2 pe-2 pt-2">
+                    <p class="ps-1 pe-1 pt-1">
                       @modelForView.Book.Description
                     </p>
                 </ul>
@@ -34,6 +34,8 @@
                 </div>
             </div>
             }
-        </div>
+        
+
+            
      </div>
 </div>

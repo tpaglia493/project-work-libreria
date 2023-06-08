@@ -17,7 +17,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    
+   
 }
 
 /*bottoni larghi*/
@@ -89,5 +89,10 @@ body {
 
 .offcanvas {
     background-image: linear-gradient(to bottom , #FFFFFF 0%, #fccc94 100%);
+
+}
+
+.container {
+   
 }
 
