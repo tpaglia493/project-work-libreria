@@ -10,9 +10,20 @@ namespace Project_Work_Libreria.Controllers.API_Controller
     {
 
 
+        [HttpGet]
+        public IActionResult GetPurchaseDatas()
+        {
+            using (BookShopContext db = new())
+            {
+                List<PurchaseData> data = db.PurchaseData.ToList();
+                return Ok(data);
+            }
+
+        }
+
         //GET PURCHASEDATA BY ID (pass ID by URL)
-        [HttpGet("{id}")]
-        public IActionResult GetPizzaById(int id)
+        [HttpGet]
+        public IActionResult GetPurchaseDataById(int id)
         {
             using (BookShopContext db = new())
             {
@@ -24,7 +35,7 @@ namespace Project_Work_Libreria.Controllers.API_Controller
                 }
                 else
                 {
-                    return NotFound();
+                    return NotFound("test");
                 }
             }
 
