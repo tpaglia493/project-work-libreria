@@ -8,6 +8,28 @@ namespace Project_Work_Libreria.Controllers.API_Controller
     [ApiController]
     public class PurchaseDataController : ControllerBase
     {
+
+
+        //GET PURCHASEDATA BY ID (pass ID by URL)
+        [HttpGet("{id}")]
+        public IActionResult GetPizzaById(int id)
+        {
+            using (BookShopContext db = new())
+            {
+                PurchaseData? dataToFind = db.PurchaseData.Where(data => data.Id == id).FirstOrDefault();
+                if (dataToFind != null)
+                {
+
+                    return Ok(dataToFind);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+        }
+
         [HttpPost("{Id}")]
         public IActionResult CreatePurchaseData(int id, [FromBody] PurchaseData data)
         {
