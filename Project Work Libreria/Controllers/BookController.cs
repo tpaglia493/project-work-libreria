@@ -174,7 +174,7 @@ namespace Project_Work_Libreria.Controllers
                     }
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
 
                 }
                 else
@@ -208,6 +208,29 @@ namespace Project_Work_Libreria.Controllers
 
             }
 
+        }
+
+        //*********************** GET VIEW ADMIN CON LISTA DI LIBRI E LORO CATEGORIA **************************
+
+        //[Authorize(Roles = "ADMIN,USER")]
+        public IActionResult Admin()
+        {
+            using (BookShopContext db = new())
+            {
+                //TODO: REFACTORING USANDO .include()
+                List<BookCategory> bookCategories = db.Categories.ToList();
+                List<Book_ListBookCategories> listOfModels = new();
+                foreach (Book book in db.Book)
+                {
+                    Book_ListBookCategories modelForView = new();
+                    modelForView.Book = book;
+                    modelForView.BookCategories = bookCategories;
+                    listOfModels.Add(modelForView);
+
+                }
+
+                return View("Admin", listOfModels);
+            }
         }
 
     }

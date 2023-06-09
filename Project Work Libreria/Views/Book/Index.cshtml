@@ -5,8 +5,8 @@
     <h1 class="text-center mb-0 bianco">La tua libreria</h1>
     
 
-<div class="container mt-5 mb-5">
-    <div class="row">
+    <div class="container mt-5 mb-5">
+        <div class="row">
         
             @foreach(Book_ListBookCategories modelForView in Model){
 
@@ -19,18 +19,6 @@
                             @modelForView.Book.Description
                             </p>
                             <div class="row bottoni">
-                                <div class="col-4">
-                                 <a href="@Url.Action("Update", "Book", new {id = modelForView.Book.Id})"> 
-                                     <button type="button"  class="btn btn-primary btn-sm modifica">Modifica</button>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <button type="button" class="btn btn-secondary btn-sm elimina" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Elimina
-                                    </button>
-                                </div>
-                                
                                 <div class="col-4">
                                     <a href="@Url.Action("Details", "Book", new {id = modelForView.Book.Id})">
                                     <button type="button" class="btn btn-secondary btn-sm dettagli ">Dettagli</button>
@@ -48,44 +36,10 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
-                  
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina questo libro</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-
-                                            Vuoi eliminare il libro "<strong>@modelForView.Book.Title</strong>"?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form asp-controller="Book" asp-action="Delete" asp-route-id="@modelForView.Book.Id" method="post" class="mt-3">
-                                                @Html.AntiForgeryToken()
-                                                <button type="submit" class="btn btn-outline-danger btn-sm mt-2">
-                                                    Conferma
-                                                </button>
-                                            </form>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-           
             }
+        </div>
+        
+    </div>
 
-
-            
-     </div>
 </div>
-

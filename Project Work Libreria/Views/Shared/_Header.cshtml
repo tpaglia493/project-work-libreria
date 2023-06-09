@@ -9,9 +9,12 @@
             <div class="navbar-nav">
 
                 <a class="btn btn-lg-r" href="@Url.Action("Index","Home")">HOME</a>
-                <a class="btn btn-lg-n" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                    GESTISCI
-                </a>
+
+                @if(User.IsInRole("ADMIN")){
+                    <a class="btn btn-lg-n" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    ADMIN TOOLS
+                    </a>
+                }
                 <div class="mt-4">   <partial name="_LoginPartial" /></div>
              
             
@@ -32,12 +35,21 @@
 
         <ul>
 
-            <a href="@Url.Action("Create","Book")"> <button type="button" class="btn mb-3">Aggiungi un libro</button></a>
-       <br />
-        <button type="button" class="btn mt-3">Aggiungi una categoria</button>
-                    
-         </ul>
-            
-       
+            <a href="@Url.Action("Create","Book")"> 
+                <button type="button" class="btn mb-3">Aggiungi un libro</button></a>
+        </ul>
+        <ul>
+            <button type="button" class="btn mt-3">Aggiungi una categoria</button>
+
+        </ul>
+
+
+
+        <ul>
+
+            <a href="@Url.Action("Admin","Book")">
+                <button type="button" class="btn mb-3">Vista Gestionale</button>
+            </a>
+        </ul>
     </div>
 </div>
