@@ -1,0 +1,11 @@
+﻿@using Project_Work_Libreria.Models.ModelForViews;
+@model PurchaseData_Book
+
+
+
+<form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@Model.Book.Id" method="post" class="mt-3">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-outline-danger btn-sm mt-2">
+        Conferma
+    </button>
+</form>
