@@ -11,21 +11,21 @@
             @foreach(Book_ListBookCategories modelForView in Model){
 
                 <div class="container-carta" >
-                    <div class="carta col-4 rounded-5" style="background-image:url(@modelForView.Book.ImgSource)">
+                    <div class="carta  rounded-5 col-3" style="background-image:url(@modelForView.Book.ImgSource)">
                         <div class="avanti"></div>
                         <div class="dietro border borders">
-                            <h1 class="px-3">@modelForView.Book.Title</h1>
-                            <p class="px-3">
+                            <h3 class="px-3 mt-1">@modelForView.Book.Title</h3>
+                            <p class="px-3" style="font-size: medium">
                             @modelForView.Book.Description
                             </p>
-                            <div class="row bottoni">
-                                <div class="col-4">
+                            <div class="row bottoni mx-1 mb-1">
+                                <div class="col-4" style="font-size: small">
                                  <a href="@Url.Action("Update", "Book", new {id = modelForView.Book.Id})"> 
                                      <button type="button"  class="btn btn-primary btn-sm modifica">Modifica</button>
                                     </a>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3 me-2">
                                     <button type="button" class="btn btn-secondary btn-sm elimina" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Elimina
                                     </button>

@@ -26,6 +26,9 @@ body {
     background-size:cover;
 }
 
+.container {
+    margin-right: 0;
+}
 /*bottoni larghi*/
 
 .btn-lg-n {
@@ -160,12 +163,13 @@ form input {
 
 
 .container-carta {
-    width: 230px;
-    height: 300px;
+    width: 270px;
+    height: 340px;
     perspective: 500px;
     margin-top: 47px;
     margin-bottom: 47px;
-    margin-left: 150px;
+    margin-left: 80px;
+    
     
 }
  .container-carta:hover > .carta {
@@ -180,6 +184,7 @@ form input {
     position: relative;
     transition: transform 1500ms;
     transform-style: preserve-3d;
+    justify-content: center;
 }
 
 .avanti,
@@ -194,9 +199,8 @@ form input {
 }
 
 .avanti {
-  
     background-size: cover;
-    
+    background-position: center;
 }
 
 .dietro {
@@ -218,6 +222,9 @@ form input {
 .elimina,
 .dettagli{
     background-color: #9cc4cc;
+    word-spacing:normal;
 }
+
+
 
 
