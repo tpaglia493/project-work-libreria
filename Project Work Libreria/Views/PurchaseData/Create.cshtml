@@ -9,12 +9,7 @@
 
             <form asp-controller="PurchaseData" asp-action="Create" method="post" asp-route-id="@Model.Book.Id" class="mt-2 py-3">
                 @Html.AntiForgeryToken()
-                <div class="mb-3">
-                    <label asp-for="Book.Id" class="form-label">Titolo</label>
-                    <input asp-for="Book.Id" type="text" class="form-control" required>
-                    <span asp-validation-for="Book.Id" class="text-danger"></span>
-                </div>
-
+            
               
 
                 <div class="mb-3">

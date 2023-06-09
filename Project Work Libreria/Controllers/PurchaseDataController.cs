@@ -27,13 +27,13 @@ namespace Project_Work_Libreria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PurchaseData_Book modelForView)
+        public IActionResult Create(int id, PurchaseData_Book modelForView)
         {
             using (BookShopContext db = new BookShopContext())
             {
 
                 DateTime purchaseDate = DateTime.Now;
-                modelForView.PurchaseData.PurchasedBookId = modelForView.Book.Id;
+                modelForView.PurchaseData.PurchasedBookId = id;
                 modelForView.PurchaseData.PurchaseDate = purchaseDate;
                 db.PurchaseData.Add(modelForView.PurchaseData);
                 db.SaveChanges();
