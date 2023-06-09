@@ -160,9 +160,9 @@ form input {
 
 
 .container-carta {
-    width: 350px;
-    height: 500px;
-    perspective: 800px;
+    width: 230px;
+    height: 300px;
+    perspective: 500px;
     margin-top: 47px;
     margin-bottom: 47px;
     margin-left: 150px;
@@ -194,7 +194,7 @@ form input {
 }
 
 .avanti {
-    background:url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
+  
     background-size: cover;
     
 }
