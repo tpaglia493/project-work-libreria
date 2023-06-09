@@ -15,6 +15,7 @@ namespace Project_Work_Libreria.Controllers
                 PurchaseData data = new();
                 Book book = db.Book.Where(book => book.Id == id).FirstOrDefault();
                 PurchaseData_Book modelForView = new();
+
                 modelForView.Book = book;
                 modelForView.PurchaseData = data;
 
@@ -30,6 +31,10 @@ namespace Project_Work_Libreria.Controllers
         {
             using (BookShopContext db = new BookShopContext())
             {
+
+                DateTime purchaseDate = DateTime.Now;
+                modelForView.PurchaseData.PurchasedBookId = modelForView.Book.Id;
+                modelForView.PurchaseData.PurchaseDate = purchaseDate;
                 db.PurchaseData.Add(modelForView.PurchaseData);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Book");
