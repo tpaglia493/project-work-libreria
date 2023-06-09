@@ -47,7 +47,7 @@ namespace Project_Work_Libreria.Controllers
                 Book newBook = new Book();
                 modelForView.BookCategories = bookCategories;
                 modelForView.Book = newBook;
-                modelForView.Book.PurchaseDatas = purchaseDatas;    
+                modelForView.Book.PurchaseDatas = purchaseDatas;
                 return View("Create", modelForView);
             }
         }
@@ -95,16 +95,16 @@ namespace Project_Work_Libreria.Controllers
                 model.Book = bookToModify;
                 List<BookCategory> bookCategories = db.Categories.ToList();
                 model.BookCategories = bookCategories;
-                
+
                 if (bookToModify != null)
                 {
                     return View("Update", model);
                 }
                 else
                 {
-            
-                 
-                    
+
+
+
                     return View(model);
 
 
@@ -160,13 +160,18 @@ namespace Project_Work_Libreria.Controllers
         {
             using (BookShopContext db = new BookShopContext())
             {
-                
+                List<PurchaseData> purchaseData = db.PurchaseData.ToList();
                 Book? bookToDelete = db.Book.Where(book => book.Id == id).FirstOrDefault();
-              
-              
+                List<PurchaseData> purchaseDataToRemove = purchaseData.Where(data => data.PurchasedBookId == id).ToList();
+
+
                 if (bookToDelete != null)
                 {
                     db.Remove(bookToDelete);
+                    foreach (PurchaseData data in purchaseDataToRemove)
+                    {
+                        db.PurchaseData.Remove(data);
+                    }
                     db.SaveChanges();
 
                     return RedirectToAction("Index");
