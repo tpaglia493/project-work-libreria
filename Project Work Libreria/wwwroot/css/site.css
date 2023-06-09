@@ -17,7 +17,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    
+   
 }
 
 /*bottoni larghi*/
@@ -89,5 +89,23 @@ body {
 
 .offcanvas {
     background-image: linear-gradient(to bottom , #FFFFFF 0%, #fccc94 100%);
+
 }
 
+.bianco {
+    color: white
+}
+
+main {
+    background: url(https://www.sns.it/sites/default/files/2021-10/jaredd-craig-HH4WBGNyltc-unsplash.jpg);
+}
+
+.borders {
+   
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    
+
+}
+
+.foot
