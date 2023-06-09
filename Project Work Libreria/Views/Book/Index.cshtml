@@ -10,8 +10,8 @@
         
             @foreach(Book_ListBookCategories modelForView in Model){
 
-                <div class="container-carta">
-                    <div class="carta col-4">
+                <div class="container-carta" >
+                    <div class="carta col-4 rounded-5" style="background-image:url(@modelForView.Book.ImgSource)">
                         <div class="avanti"></div>
                         <div class="dietro border borders">
                             <h1 class="px-3">@modelForView.Book.Title</h1>
