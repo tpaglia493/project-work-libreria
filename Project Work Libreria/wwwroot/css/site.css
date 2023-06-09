@@ -21,7 +21,7 @@ html {
 
 body {
     margin-bottom: 0px;
-    background: url(0zuld2.jpg);
+    background: url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
     
     background-size:cover;
 }
@@ -167,7 +167,7 @@ form input {
     margin-left: 150px;
     
 }
- .container-carta:hover > .card {
+ .container-carta:hover > .carta {
         cursor: pointer;
         transform: rotateY(180deg);
 
@@ -189,11 +189,13 @@ form input {
     box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
     position: absolute;
     backface-visibility: hidden;
+    
 }
 
 .avanti {
     background:url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
     background-size: cover;
+    
 }
 
 .dietro {
@@ -205,5 +207,14 @@ form input {
     justify-content: center;
     gap: 5rem;
     text-align: center;
+    background: url(https://st2.depositphotos.com/3538001/7686/i/600/d6860211-stock-photo-frosted-glass-white-color.jpg);
+    background-size: cover;
+    position: relative;
 }
+
+
+.bottoni {
+   
+}
+
 
