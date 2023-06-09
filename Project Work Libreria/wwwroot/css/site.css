@@ -1,4 +1,8 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 @media (min-width: 768px) {
   html {
@@ -12,12 +16,14 @@ html {
 }
 
 .navbar {
-    background-image: linear-gradient(to right, #FFFFFF 0%, #98c8c8 100%);
+    background-image: linear-gradient(to right, #FFFFFF 0%, #9cc4cc 100%);
 }
 
 body {
-    margin-bottom: 60px;
-   
+    margin-bottom: 0px;
+    background: url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
+    
+    background-size:cover;
 }
 
 /*bottoni larghi*/
@@ -93,19 +99,122 @@ body {
 }
 
 .bianco {
-    color: white
+    color: white;
 }
 
-main {
-    background: url(https://www.sns.it/sites/default/files/2021-10/jaredd-craig-HH4WBGNyltc-unsplash.jpg);
-}
+
 
 .borders {
    
     background-color: rgba(255, 255, 255, .1);
     backdrop-filter: blur(10px);
     
+    
 
 }
 
-.foot
+.footer {
+    background-image: linear-gradient(to bottom left, #FFFFFF 0%, #98c8c8 100%);
+    margin-top: 47px;
+    width: 100%;
+    padding: 100px 15%;
+    display: flex;
+   
+}
+
+.footer div {
+    text-align: center;
+}
+
+.due {
+    flex-grow: 2;
+}
+
+.footer div h3 {
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.uno a {
+    display: block;
+    text-decoration: none;
+    color: #efefef;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 400px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    margin-block: 40px;
+}
+
+.update {
+    margin-top: 47px;
+}
+
+
+
+.container-carta {
+    width: 350px;
+    height: 500px;
+    perspective: 800px;
+    margin-top: 47px;
+    margin-bottom: 47px;
+    margin-left: 150px;
+    
+}
+ .container-carta:hover > .carta {
+        cursor: pointer;
+        transform: rotateY(180deg);
+
+ }
+
+.carta {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.avanti,
+.dietro {
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    backface-visibility: hidden;
+    
+}
+
+.avanti {
+    background:url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
+    background-size: cover;
+    
+}
+
+.dietro {
+    background-color: #98c8c8;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    text-align: center;
+    background: url(https://st2.depositphotos.com/3538001/7686/i/600/d6860211-stock-photo-frosted-glass-white-color.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+
+.bottoni {
+   
+}
+
+
