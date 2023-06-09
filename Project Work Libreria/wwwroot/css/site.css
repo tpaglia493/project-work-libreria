@@ -16,12 +16,14 @@ html {
 }
 
 .navbar {
-    background-image: linear-gradient(to right, #FFFFFF 0%, #98c8c8 100%);
+    background-image: linear-gradient(to right, #FFFFFF 0%, #9cc4cc 100%);
 }
 
 body {
     margin-bottom: 0px;
-    background: url(https://img.freepik.com/premium-photo/row-old-books-blue-shelf-horizontal-background-banner_118047-9024.jpg);
+    background: url(0zuld2.jpg);
+    
+    background-size:cover;
 }
 
 /*bottoni larghi*/
@@ -153,3 +155,55 @@ form input {
 .update {
     margin-top: 47px;
 }
+
+
+
+.container-carta {
+    width: 350px;
+    height: 500px;
+    perspective: 800px;
+    margin-top: 47px;
+    margin-bottom: 47px;
+    margin-left: 150px;
+    
+}
+ .container-carta:hover > .card {
+        cursor: pointer;
+        transform: rotateY(180deg);
+
+ }
+
+.carta {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.avanti,
+.dietro {
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.avanti {
+    background:url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
+    background-size: cover;
+}
+
+.dietro {
+    background-color: #98c8c8;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    text-align: center;
+}
+
