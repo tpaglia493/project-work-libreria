@@ -21,7 +21,7 @@ html {
 
 body {
     margin-bottom: 0px;
-    background: url(https://img.freepik.com/premium-photo/row-old-bookhelf-horizontal-background-banner_118047-9024.jpg );
+    background: url( PHOTO-2023-06-06-14-34-00-removebg-preview.png );
 }
 
 /*bottoni larghi*/
@@ -82,7 +82,7 @@ body {
 }
 
 .card {
-    justify-content: center;
+    justify-content: space-around;
     
     
 }
