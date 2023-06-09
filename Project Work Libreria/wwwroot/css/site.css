@@ -82,7 +82,7 @@ body {
 }
 
 .card {
-    justify-content: space-around;
+    justify-content: center;
     
     
 }
@@ -97,7 +97,7 @@ body {
 }
 
 .bianco {
-    color: white
+    color: white;
 }
 
 
