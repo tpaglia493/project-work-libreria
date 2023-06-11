@@ -9,13 +9,9 @@
 
   <ItemGroup>
     <Compile Remove="Views\Nuova cartella1\**" />
-    <Compile Remove="wwwroot\Nuova cartella\**" />
     <Content Remove="Views\Nuova cartella1\**" />
-    <Content Remove="wwwroot\Nuova cartella\**" />
     <EmbeddedResource Remove="Views\Nuova cartella1\**" />
-    <EmbeddedResource Remove="wwwroot\Nuova cartella\**" />
     <None Remove="Views\Nuova cartella1\**" />
-    <None Remove="wwwroot\Nuova cartella\**" />
   </ItemGroup>
 
   <ItemGroup>
