@@ -23,6 +23,9 @@ namespace Project_Work_Libreria.Models
         [Range(0, float.MaxValue)]
         public float Price { get; set; }
 
+        //TODO: INSERIRE DATA-VALIDATIONS
+        public float? SupplierPrice { get; set; }
+
         [Range(0, int.MaxValue)]
         public int? AvailableCopies { get; set; }
 
@@ -30,12 +33,13 @@ namespace Project_Work_Libreria.Models
         public int? BookCategoryId { get; set; }
         public BookCategory? Category { get; set; }
 
-
+        // IMPOSTAZIONE RELAZIONE N-1 CON PURCHASEDATA  
         public List<PurchaseData>? PurchaseDatas { get; set; }
 
+        // IMPOSTAZIONE RELAZIONE N-1 CON ADMINPURCHASEDATA  
+        public List<AdminPurchaseData>? AdminPurchaseDatas { get; set; }
 
 
-     
 
         public Book() { }
 
