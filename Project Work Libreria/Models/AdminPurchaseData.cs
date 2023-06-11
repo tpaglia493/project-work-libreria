@@ -11,11 +11,12 @@
         public int? PurchasedBookId { get; set; }
         public Book? PurchasedBook { get; set; }
 
-        public string Supplier { get; set; }
-
         public int PurchasePrice { get; set; }
 
-        public List<Supplier>? Suppliers { get; set; }
+
+        //relazione 1-n con supplier
+        public int? SupplierId { get; set; }
+        public Supplier? Supplier { get; set; }
 
         public AdminPurchaseData() { }
 

@@ -1,8 +1,20 @@
 ﻿@model List<Book_ListBookCategories>
+@using Project_Work_Libreria.Database;
+
 @using Project_Work_Libreria.Models.ModelForViews;
 @{
     int counter = 0;
+    int SupplierCout = 0;
+    List<Supplier> suppliers = new List<Supplier>();
+    using(BookShopContext db = new BookShopContext())
+    {
+        foreach(Supplier supplier in db.Supplier)
+        {
+            suppliers.Add(supplier);
+        }
+    }
 }
+
 
 <div class="container mt-5">
     <div class="row">
@@ -142,6 +154,17 @@
                                         </div>
 
                                         <input class="d-none" id="@counter-hidden-supplierPrice" value="@dataModel.Book.SupplierPrice"></input>
+                                        <strong>Casa editrice:</strong>
+                                        <select id="@counter-supplier-input" rows="10" class="d-block w-100">
+                                           
+                                            <option  value=""></option>
+                                            @foreach (Supplier supplier in suppliers)
+                                            {
+                                                ++SupplierCout;
+                                                <option onclick="valueFunction(event)" id="@SupplierCout-supplier-input" value="@supplier.Id" selected>@supplier.Name</option>
+                                               
+                                            }
+                                        </select>
 
                                     </div>
                                     <div class="modal-footer">
@@ -182,20 +205,25 @@
         </div>
     </div>
 </div>
+              @section Scripts{
+   let inputSupplierId;
 
-                            @section Scripts{
-   
-  
+   function valueFunction(event){
+       inputSupplierId = event.target.value;
+
+  console.log(inputSupplierId);
+   }
   
      function BuyFunction(event){
     let supplierPrice = document.getElementById(event.target.id + `-hidden-supplierPrice`).value;
     let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
     console.log(event);
+    debugger;
     axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
     purchaseDate: new Date(),
     quantity: inputQuantity,
     purchasedBookId: event.target.value,
-    supplier: document.getElementById(event.target.id + `-supplier-input`).value,
+    supplierId: inputSupplierId,
     purchasePrice: inputQuantity*supplierPrice
     
     }

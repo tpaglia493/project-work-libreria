@@ -33,8 +33,13 @@ namespace Project_Work_Libreria.Models
         public int? BookCategoryId { get; set; }
         public BookCategory? Category { get; set; }
 
+
+
         // IMPOSTAZIONE RELAZIONE N-1 CON PURCHASEDATA  
         public List<PurchaseData>? PurchaseDatas { get; set; }
+
+
+
 
         // IMPOSTAZIONE RELAZIONE N-1 CON ADMINPURCHASEDATA  
         public List<AdminPurchaseData>? AdminPurchaseDatas { get; set; }

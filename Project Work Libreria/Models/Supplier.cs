@@ -5,9 +5,9 @@
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public int AdminPurchaseDataId { get; set; }
-        public AdminPurchaseData AdminPurchaseData { get; set; }
+       
 
+        public List<AdminPurchaseData>? AdminPurchaseDatas { get; set; }
 
         public Supplier() { }
     }
