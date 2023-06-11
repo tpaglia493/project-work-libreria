@@ -40,29 +40,36 @@
                             <td>@dataModel.Book.Description</td>
                             <td>@dataModel.Book.Price.ToString("n2") €</td>
                             <td>@dataModel.Book.AvailableCopies</td>
+
+                            <!------------------------------------------------ AZIONI -------------------------------------------------->
                             <td>
+                                <!--MODIFICA-->
                                 <div>
                                     <a href="@Url.Action("Update", "Book", new {id = dataModel.Book.Id})">
                                         <button type="button" class="btn btn-primary btn-sm modifica"><span class="material-icons-outlined">edit</span></button>
                                     </a>
                                 </div>
-                              
 
 
+                                <!--ELIMINA-->
                                 <div>
                                     <button type="button" class="btn btn-secondary btn-sm elimina" data-bs-toggle="modal" data-bs-target="#@counter-exampleModal">
                                         <span class="material-icons-outlined">delete</span>
                                     </button>
                                 </div>
 
-                                <div class="col-4">
+                                <!--DETTAGLI-->
+                                <div>
                                     <a href="@Url.Action("Details", "Book", new {id = dataModel.Book.Id})">
                                         <button type="button" class="btn btn-secondary btn-sm dettagli "><span class="material-icons-outlined"> info</span></button>
                                     </a>
                                 </div>
+
+                                <!--ACQUISTA DAL FORNITORE-->
+
                             </td>
                         </tr>
-                        <!-- Modal -->
+                        <!-------------------------------------------- MODALE PER LA DELETE ----------------------------------------->
                         <div class="modal fade" id="@counter-exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
