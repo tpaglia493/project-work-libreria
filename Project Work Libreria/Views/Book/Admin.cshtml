@@ -39,7 +39,26 @@
                             <td>@dataModel.Book.Category.Name</td>
                             <td>@dataModel.Book.Description</td>
                             <td>@dataModel.Book.Price.ToString("n2") €</td>
-                            <td>@dataModel.Book.AvailableCopies</td>
+                            <td>@dataModel.Book.AvailableCopies
+
+                             
+                             
+                              
+                            
+                                @if(dataModel.Book.AvailableCopies <= 10)
+                                {
+                                    <button class="btn btn-danger pe-none">ATTENZIONE</button>
+                                }
+                                else if (dataModel.Book.AvailableCopies <= 30)
+                                {
+                                    <button class="btn btn-warning pe-none">In esaurimento</button>
+                                            }
+                                else if (dataModel.Book.AvailableCopies > 30)
+                                {
+                                    <button class="btn btn-success pe-none">Vai alla grande</button>
+                                }
+
+                            </td>
 
                             <!------------------------------------------------ AZIONI -------------------------------------------------->
                             <td>

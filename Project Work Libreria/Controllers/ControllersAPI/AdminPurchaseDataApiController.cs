@@ -16,7 +16,7 @@ namespace Project_Work_Libreria.Controllers.ControllersAPI
             {
                 int BookId = (int)AdminPurchaseData.PurchasedBookId;
                 Book purchasedBook = db.Book.Where(book => book.Id == BookId).FirstOrDefault();
-                purchasedBook.AvailableCopies -= AdminPurchaseData.Quantity;
+                purchasedBook.AvailableCopies += AdminPurchaseData.Quantity;
                 db.AdminPurchaseDatas.Add(AdminPurchaseData);
                 db.SaveChanges();
 
