@@ -15,6 +15,8 @@ namespace Project_Work_Libreria.Database
 
         public DbSet<AdminPurchaseData> AdminPurchaseDatas { get; set; }
 
+        public DbSet<Supplier> Supplier { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

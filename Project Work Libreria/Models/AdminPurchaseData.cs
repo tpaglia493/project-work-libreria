@@ -15,6 +15,8 @@
 
         public int PurchasePrice { get; set; }
 
+        public List<Supplier>? Suppliers { get; set; }
+
         public AdminPurchaseData() { }
 
     }
