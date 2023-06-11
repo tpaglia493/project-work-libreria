@@ -170,13 +170,14 @@
   
      function BuyFunction(event){
     let supplierPrice = document.getElementById(event.target.id + `-hidden-supplierPrice`).value;
+    let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
     console.log(event);
     axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
     purchaseDate: new Date(),
-    quantity: document.getElementById(event.target.id + `-quantity-input`).value,
+    quantity: inputQuantity,
     purchasedBookId: event.target.value,
     supplier: document.getElementById(event.target.id + `-supplier-input`).value,
-    purchasePrice: quantity*supplierPrice
+    purchasePrice: inputQuantity*supplierPrice
     
     }
     )
