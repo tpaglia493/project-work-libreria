@@ -1,5 +1,8 @@
 ﻿@model List<Book_ListBookCategories>
 @using Project_Work_Libreria.Models.ModelForViews;
+@{
+    int counter = 0;
+}
 
 <div class="container mt-5">
     <div class="row">
@@ -27,7 +30,7 @@
                 <tbody>
                     @foreach (Book_ListBookCategories dataModel in Model)
                     {
-
+                        ++counter;
                         <tr>
                             <th scope="row">@dataModel.Book.Id</th>
                             <td><img class="img-fluid img_square" width="100" height="100" src="@dataModel.Book.ImgSource" alt="Immagine @dataModel.Book.Title"></td>
@@ -47,7 +50,7 @@
 
 
                                 <div>
-                                    <button type="button" class="btn btn-secondary btn-sm elimina" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button type="button" class="btn btn-secondary btn-sm elimina" data-bs-toggle="modal" data-bs-target="#@counter-exampleModal">
                                         <span class="material-icons-outlined">delete</span>
                                     </button>
                                 </div>
@@ -60,7 +63,7 @@
                             </td>
                         </tr>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="@counter-exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -70,7 +73,7 @@
                                     <div class="modal-body">
 
 
-                                        Vuoi eliminare il libro "<strong>.Book.Title</strong>"?
+                                        Vuoi eliminare il libro "<strong>@dataModel.Book.Title</strong>"?
                                     </div>
                                     <div class="modal-footer">
                                         <form asp-controller="Book" asp-action="Delete" asp-route-id="@dataModel.Book.Id" method="post" class="mt-3">

@@ -74,7 +74,7 @@ namespace Project_Work_Libreria.Controllers
 
                 db.Book.Add(data.Book);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
 
 
@@ -113,7 +113,7 @@ namespace Project_Work_Libreria.Controllers
             }
         }
 
-        // [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Book_ListBookCategories modifiedBook)
@@ -142,7 +142,7 @@ namespace Project_Work_Libreria.Controllers
                     bookToModify.Price = modifiedBook.Book.Price;
 
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
 
                 }
                 else
