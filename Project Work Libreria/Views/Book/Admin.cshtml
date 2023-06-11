@@ -160,8 +160,8 @@
                                             <option  value=""></option>
                                             @foreach (Supplier supplier in suppliers)
                                             {
-                                                ++SupplierCout;
-                                                <option onclick="valueFunction(event)" id="@SupplierCout-supplier-input" value="@supplier.Id" selected>@supplier.Name</option>
+                                              
+                                                <option value="@supplier.Id" selected>@supplier.Name</option>
                                                
                                             }
                                         </select>
@@ -208,17 +208,16 @@
               @section Scripts{
    let inputSupplierId;
 
-   function valueFunction(event){
-       inputSupplierId = event.target.value;
-
-  console.log(inputSupplierId);
-   }
+ 
+ 
+   
   
      function BuyFunction(event){
+         debugger;
     let supplierPrice = document.getElementById(event.target.id + `-hidden-supplierPrice`).value;
     let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
     console.log(event);
-    debugger;
+    console.log(inputSupplierId);
     axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
     purchaseDate: new Date(),
     quantity: inputQuantity,
