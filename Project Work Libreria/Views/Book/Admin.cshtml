@@ -15,7 +15,8 @@
     }
 }
 
-
+<input class="d-none"id="book-counter" value="@Model.Count"></input>
+<input class="d-none" id="supplier-counter" value="@suppliers.Count"></input>
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
@@ -148,23 +149,22 @@
                                             <input type="number" id="@counter-quantity-input" class="form-control" placeholder="Scegli la quantità" aria-label="Scegli la quantità" aria-describedby="basic-addon2">
 
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <input type="text" id="@counter-supplier-input" class="form-control" placeholder="Inserisci il nome del fornitore.." aria-label="Inserisci il nome del fornitore.." aria-describedby="basic-addon2">
-
-                                        </div>
-
+                                       
                                         <input class="d-none" id="@counter-hidden-supplierPrice" value="@dataModel.Book.SupplierPrice"></input>
-                                        <strong>Casa editrice:</strong>
+                                        <strong>Fornitore:</strong>
                                         <select id="@counter-supplier-input" rows="10" class="d-block w-100">
                                            
-                                            <option  value=""></option>
+                                            <option  value="">Fornitore</option>
                                             @foreach (Supplier supplier in suppliers)
                                             {
-                                              
-                                                <option value="@supplier.Id" selected>@supplier.Name</option>
+
+                                                <option value="@supplier.Id">
+                                                   @supplier.Name
+                                                </option>
                                                
                                             }
                                         </select>
+
 
                                     </div>
                                     <div class="modal-footer">
@@ -207,17 +207,21 @@
 </div>
               @section Scripts{
    let inputSupplierId;
+  
 
- 
- 
-   
   
      function BuyFunction(event){
-         debugger;
+     
+    let supplierIdSelect = document.getElementById(event.target.id + `-supplier-input`);  
+
+    inputSupplierId = supplierIdSelect.options[supplierIdSelect.selectedIndex].value;
+
     let supplierPrice = document.getElementById(event.target.id + `-hidden-supplierPrice`).value;
+
     let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
-    console.log(event);
+
     console.log(inputSupplierId);
+
     axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
     purchaseDate: new Date(),
     quantity: inputQuantity,
