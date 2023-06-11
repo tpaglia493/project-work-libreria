@@ -65,7 +65,16 @@
                                     </a>
                                 </div>
 
-                                <!--ACQUISTA DAL FORNITORE-->
+                            
+                                <!-- BOTTONE PER L'ACUISTO DAL FORNITORE CON MODALE -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#PurchaseModal[@counter]">
+                                    <span class="material-icons-outlined">
+                                        shopping_cart
+                                    </span>
+                                </button>
+
+
+                               
 
                             </td>
                         </tr>
@@ -92,6 +101,33 @@
                                         
                                     </div>
 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MODALE ACQUISTO -->
+                        <div class="modal fade" id="PurchaseModal[@counter]" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma acquisto</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <input type="number" id="@counter-quantity-input" class="form-control" placeholder="Scegli la quantità" aria-label="Scegli la quantità" aria-describedby="basic-addon2">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <!--TROVARE UN MODO PER TIRARE FUORI L'ID DEL LIBRO (ACCROCCO VALUE E ID DEL BOTTONE)-->
+
+                                        <button type="submit" onclick="BuyFunction(event)" id="@counter" value="@dataModel.Book.Id" data-bs-dismiss="modal"
+                                                class="btn btn-outline-danger btn-sm mt-2">
+                                            Conferma
+                                        </button>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
