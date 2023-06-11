@@ -36,6 +36,8 @@ namespace Project_Work_Libreria.Controllers
                 modelForView.PurchaseData.PurchasedBookId = id;
                 modelForView.PurchaseData.PurchaseDate = purchaseDate;
                 db.PurchaseData.Add(modelForView.PurchaseData);
+                Book BoughtBook = db.Book.Where(book => book.Id == id).FirstOrDefault();
+                BoughtBook.AvailableCopies = BoughtBook.AvailableCopies - modelForView.PurchaseData.Quantity;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Book");
             }
