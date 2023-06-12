@@ -21,18 +21,17 @@ html {
 
 body {
     margin-bottom: 0px;
-    background: url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
+    background: url('/img/Progetto senza titolo.jpg');
     
     background-size:cover;
 }
 
-main {
-    justify-content:center;
-}
+/*main {
+  margin:0 auto;
+    
+}*/
 
-.container {
-    margin-right: 0;
-}
+
 /*bottoni larghi*/
 
 .btn-lg-n {
