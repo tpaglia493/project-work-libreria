@@ -21,11 +21,18 @@ html {
 
 body {
     margin-bottom: 0px;
-    background: url('/img/Progetto senza titolo.jpg');
+    background: url(storia-di-una-ladra-di-libri-markus-zusak-copertina.webp);
     
     background-size:cover;
 }
 
+main {
+    justify-content:center;
+}
+
+.container {
+    margin-right: 0;
+}
 /*bottoni larghi*/
 
 .btn-lg-n {
@@ -85,12 +92,18 @@ body {
 
 .card {
     justify-content: center;
+    width: 300px;
+    margin-left:20px;
+    margin-right:20px;
+
+    
     
     
 }
 
 .btn:hover {
     background-image: linear-gradient(to top, #FFFFFF 0%, #fccc94 100%);
+    color:#000;
 }
 
 .offcanvas {
@@ -107,7 +120,7 @@ body {
 .borders {
    
     background-color: rgba(255, 255, 255, .1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(25px);
     
     
 
@@ -158,13 +171,14 @@ form input {
 
 
 
-.container-carta {
-    width: 230px;
-    height: 300px;
+/*.container-carta {
+    width: 270px;
+    height: 340px;
     perspective: 500px;
     margin-top: 47px;
     margin-bottom: 47px;
-    margin-left: 150px;
+    margin-left: 80px;
+    
     
 }
  .container-carta:hover > .carta {
@@ -179,6 +193,7 @@ form input {
     position: relative;
     transition: transform 1500ms;
     transform-style: preserve-3d;
+    justify-content: center;
 }
 
 .avanti,
@@ -193,9 +208,8 @@ form input {
 }
 
 .avanti {
-  
     background-size: cover;
-    
+    background-position: center;
 }
 
 .dietro {
@@ -212,6 +226,15 @@ form input {
     position: relative;
 }
 
+
+.modifica,
+.elimina,
+.dettagli{
+    background-color: #9cc4cc;
+    word-spacing:normal;
+}
+
+*/
 
 
 
