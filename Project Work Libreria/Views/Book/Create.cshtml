@@ -17,7 +17,14 @@
     /* --line_color : #00135C ;
     --back_color : #DEFFFA  ; */
 }
-
+button{
+   border:none;
+   background-color:transparent;
+   text-align:center;
+   margin-top:12px;
+   color:var(--line_color);
+   font-size:19px;
+}
 .button{
     position : relative ;
     z-index : 0 ;
@@ -299,13 +306,13 @@
              @*   <button type="submit" class="btn btn-n">Salva</button>*@
                 <div class="col-6 text-center">
 
-                    <a  href="#" class="button" type="submit">
+                    <div  class="button">
                         <div class="button__line"></div>
                         <div class="button__line"></div>
-                        <button type="submit" class="d-none button__text">Salva</button>
+                        <button type="submit"><span class="button__text">Salva</span></button>
                         <div class="button__drow1"></div>
                         <div class="button__drow2"></div>
-                    </a>
+                    </div>
 
                 </div>
                 </div>
