@@ -1,11 +1,13 @@
-﻿namespace Project_Work_Libreria.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Project_Work_Libreria.Models
 {
     public class AdminPurchaseData
     {
         public int Id { get; set; }
-
+        [Required]
         public DateTime PurchaseDate { get; set; }
-
+        [Required]
         public int Quantity { get; set; }
 
         public int? PurchasedBookId { get; set; }
