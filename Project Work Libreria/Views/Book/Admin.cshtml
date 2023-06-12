@@ -208,19 +208,13 @@
     </div>
 </div>
 @section Scripts{
-
+    console.log(window)
         let inputSupplierId;
 
-        function ReloadPage(seconds){
-                let timeToStop = new Date().getTime() + (seconds * 1000);
-              while (new Date().getTime() <= timeToStop) {
-
-                      window.location.reload();  }}
 
          function BuyFunction(event){
-
-
-
+         
+ 
         let supplierIdSelect = document.getElementById(event.target.id + `-supplier-input`);
 
         inputSupplierId = supplierIdSelect.options[supplierIdSelect.selectedIndex].value;
@@ -249,7 +243,7 @@ console.log(response.data);
 console.error(error.response.data);
 })
 
- window.location.reload();
+ window.reload();
 
  }
 
