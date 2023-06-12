@@ -26,6 +26,10 @@ body {
     background-size:cover;
 }
 
+main {
+    justify-content:center;
+}
+
 .container {
     margin-right: 0;
 }
@@ -88,6 +92,11 @@ body {
 
 .card {
     justify-content: center;
+    width: 300px;
+    margin-left:20px;
+    margin-right:20px;
+
+    
     
     
 }
@@ -162,7 +171,7 @@ form input {
 
 
 
-.container-carta {
+/*.container-carta {
     width: 270px;
     height: 340px;
     perspective: 500px;
@@ -225,6 +234,7 @@ form input {
     word-spacing:normal;
 }
 
+*/
 
 
 
