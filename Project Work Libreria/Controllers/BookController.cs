@@ -161,9 +161,10 @@ namespace Project_Work_Libreria.Controllers
             using (BookShopContext db = new BookShopContext())
             {
                 List<PurchaseData> purchaseData = db.PurchaseData.ToList();
+                List<AdminPurchaseData> adminPurchaseData = db.AdminPurchaseDatas.ToList();
                 Book? bookToDelete = db.Book.Where(book => book.Id == id).FirstOrDefault();
                 List<PurchaseData> purchaseDataToRemove = purchaseData.Where(data => data.PurchasedBookId == id).ToList();
-
+                List<AdminPurchaseData> adminPurchaseDataToRemove = adminPurchaseData.Where(data => data.PurchasedBookId == id).ToList();
 
                 if (bookToDelete != null)
                 {
@@ -171,6 +172,10 @@ namespace Project_Work_Libreria.Controllers
                     foreach (PurchaseData data in purchaseDataToRemove)
                     {
                         db.PurchaseData.Remove(data);
+                    }
+                    foreach (AdminPurchaseData data in adminPurchaseDataToRemove)
+                    {
+                        db.AdminPurchaseDatas.Remove(data);
                     }
                     db.SaveChanges();
 
