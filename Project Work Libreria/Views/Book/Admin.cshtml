@@ -221,7 +221,7 @@
     let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
 
     console.log(inputSupplierId);
-    debugger;
+ 
     axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
     purchaseDate: new Date(),
     quantity: inputQuantity,
