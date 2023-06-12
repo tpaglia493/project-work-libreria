@@ -8,11 +8,13 @@ namespace Project_Work_Libreria.Models
         [Required]
         public DateTime PurchaseDate { get; set; }
         [Required]
+        [Range(0, int.MaxValue)]
         public int Quantity { get; set; }
 
+        [Required]
         public int? PurchasedBookId { get; set; }
         public Book? PurchasedBook { get; set; }
-
+        [Required]
         public int PurchasePrice { get; set; }
 
 

@@ -146,7 +146,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="input-group mb-3">
-                                            <input type="number" id="@counter-quantity-input" class="form-control" default="1" placeholder="Scegli la quantità" aria-label="Scegli la quantità" aria-describedby="basic-addon2">
+                                            <input type="number" id="@counter-quantity-input" class="form-control" value="1" placeholder="Scegli la quantità" aria-label="Scegli la quantità" aria-describedby="basic-addon2">
 
                                         </div>
                                        
@@ -171,7 +171,7 @@
 
                                         <!--BOTTONE CON FUNZIONE CHE SI RICOLLEGA ALLA CHIAMATA API-->
 
-                                        <button type="submit" onclick="BuyFunction(event)" id="@counter" value="@dataModel.Book.Id" data-bs-dismiss="modal"
+                                        <button type="submit" onclick="BuyFunction(event)" id="@counter" value="@dataModel.Book.Id" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ConfirmModal"
                                                 class="btn btn-outline-danger btn-sm mt-2">
                                             Conferma
                                         </button>
@@ -180,6 +180,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        
 
                     }
                     <tr>
@@ -205,39 +207,53 @@
         </div>
     </div>
 </div>
-              @section Scripts{
-   let inputSupplierId;
-  
+@section Scripts{
 
-  
-     function BuyFunction(event){
-     
-    let supplierIdSelect = document.getElementById(event.target.id + `-supplier-input`);  
+        let inputSupplierId;
 
-    inputSupplierId = supplierIdSelect.options[supplierIdSelect.selectedIndex].value;
+        function ReloadPage(seconds){
+                let timeToStop = new Date().getTime() + (seconds * 1000);
+              while (new Date().getTime() <= timeToStop) {
 
-    let supplierPrice = document.getElementById(event.target.id + `-hidden-supplierPrice`).value;
+                      window.location.reload();  }}
 
-    let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
+         function BuyFunction(event){
 
-    console.log(inputSupplierId);
- 
-    axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
-    purchaseDate: new Date(),
-    quantity: inputQuantity,
-    purchasedBookId: event.target.value,
-    supplierId: inputSupplierId,
-    purchasePrice: inputQuantity*supplierPrice
-    
-    }
-    )
-    .then(response => {
-    console.log(response.data);
-    })
-    .catch(error => {
-    console.error(error.response.data);
-    })
 
-    
-     }
-    }
+
+        let supplierIdSelect = document.getElementById(event.target.id + `-supplier-input`);
+
+        inputSupplierId = supplierIdSelect.options[supplierIdSelect.selectedIndex].value;
+
+        let supplierPrice = document.getElementById(event.target.id + `-hidden-supplierPrice`).value;
+
+        let inputQuantity = document.getElementById(event.target.id + `-quantity-input`).value;
+
+        console.log(inputSupplierId);
+
+        axios.post('https://localhost:7093/api/AdminPurchaseDataApi/Create',{
+        purchaseDate: new Date(),
+        quantity: inputQuantity,
+        purchasedBookId: event.target.value,
+        supplierId: inputSupplierId,
+        purchasePrice: inputQuantity*supplierPrice
+
+        }
+
+
+        )
+        .then(response => {
+console.log(response.data);
+})
+.catch(error => {
+console.error(error.response.data);
+})
+
+ window.location.reload();
+
+ }
+
+}
+
+
+}
