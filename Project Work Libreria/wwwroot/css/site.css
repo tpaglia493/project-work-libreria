@@ -509,8 +509,9 @@ button {
 }
 
 .btn:hover {
-    background-image: linear-gradient(to top, #FFFFFF 0%, #fccc94 100%);
-    color:#000;
+    /*background-image: linear-gradient(to top, #fccc94 0%);*/
+    color: #fff;
+    box-shadow: 0 0 40px 40px #fc9434 inset;
 }
 
 .offcanvas {
