@@ -548,8 +548,8 @@ button {
     background-image: linear-gradient(to bottom left, #FFFFFF 0%, #98c8c8 100%);
     margin-top: 47px;
     width: 100%;
-    padding: 100px 15%;
-    display: flex;
+    padding: 25px 15%;
+    display: flex
    
 }
 
