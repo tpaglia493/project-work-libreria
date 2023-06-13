@@ -94,11 +94,10 @@ body {
     width: 300px;
     margin-left:20px;
     margin-right:20px;
-
-    
-    
     
 }
+
+
 
 .btn:hover {
     background-image: linear-gradient(to top, #FFFFFF 0%, #fccc94 100%);
@@ -167,6 +166,69 @@ form input {
 .update {
     margin-top: 47px;
 }
+
+
+.heart-like-button {
+    position: relative;
+    width: 160px;
+    height: 130px;
+}
+
+    .heart-like-button:before {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+        width: 10px;
+        height: 25px;
+        border-radius: 40px 40px 0 0;
+        background-color: #574136;
+        content: "";
+        cursor: pointer;
+        transition: background .4s;
+    }
+
+    .heart-like-button:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+        width: 10px;
+        height: 25px;
+        border-radius: 40px 40px 0 0;
+        background-color: #574136;
+        content: "";
+        cursor: pointer;
+        transition: background .4s;
+    }
+
+
+
+.heart-like-button.liked::before,
+.heart-like-button.liked::after {
+    background-color: #d65076;
+}
+
+.heart-like-button.liked {
+    animation: liked .4s ease;
+}
+
+@keyframes liked {
+    0% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 
 
 
