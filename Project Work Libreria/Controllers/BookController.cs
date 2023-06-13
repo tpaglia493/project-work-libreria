@@ -13,26 +13,34 @@ namespace Project_Work_Libreria.Controllers
         //*********************** GET LISTA DI LIBRI CON LA LORO CATEGORIA **************************
 
         //[Authorize(Roles = "ADMIN,USER")]
+        //public IActionResult Index()
+        //{
+        //    using (BookShopContext db = new())
+        //    {
+        //        //TODO: REFACTORING USANDO .include()
+        //        List<BookCategory> bookCategories = db.Categories.ToList();
+        //        List<Book_ListBookCategories> listOfModels = new();
+        //        foreach (Book book in db.Book)
+        //        {
+        //            Book_ListBookCategories modelForView = new();
+        //            modelForView.Book = book;
+        //            modelForView.BookCategories = bookCategories;
+        //            listOfModels.Add(modelForView);
+
+        //        }
+
+        //        return View("Index", listOfModels);
+        //    }
+        //}
         public IActionResult Index()
         {
-            using (BookShopContext db = new())
+            using (BookShopContext db = new BookShopContext())
             {
-                //TODO: REFACTORING USANDO .include()
-                List<BookCategory> bookCategories = db.Categories.ToList();
-                List<Book_ListBookCategories> listOfModels = new();
-                foreach (Book book in db.Book)
-                {
-                    Book_ListBookCategories modelForView = new();
-                    modelForView.Book = book;
-                    modelForView.BookCategories = bookCategories;
-                    listOfModels.Add(modelForView);
 
-                }
-
-                return View("Index", listOfModels);
+                List<Book> ourPizza = db.Book.ToList();
+                return View(ourPizza);
             }
         }
-
         //******************************* CREARE UN LIBRO ***********************************//
 
         [Authorize(Roles = "ADMIN")]

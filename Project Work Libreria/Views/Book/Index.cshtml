@@ -1,23 +1,11 @@
-﻿@model List<Book_ListBookCategories>
+﻿@model List<Book>
 @using Project_Work_Libreria.Database;
 @using Project_Work_Libreria.Models.ModelForViews;
 
-
 @{
-    List<Book> bookPerCategory = new();
-    List<BookCategory> bookCategories = new();
-    using(BookShopContext db = new())
-    {
-        foreach(BookCategory bookCategory in db.Categories){
-            bookCategories.Add(bookCategory);
-
-            foreach(Book book in db.Book.Where(book => book.BookCategoryId == bookCategory.Id))
-            {
-                bookPerCategory.Add(book);
-            }   
-        }
-    }
+    List<Book> Distopico = Model.Where(b => b.BookCategoryId == 2).ToList();
 }
+
 <div class="main">
     <h1 class="text-center mb-0 mt-3 bianco">La tua libreria</h1>
       
@@ -25,55 +13,49 @@
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
 
-            @foreach(BookCategory category in bookCategories)
-            {     
-                <div>
-                <h1>@category.Name</h1>
-                </div>
-                
 
-        
-            foreach(Book book in bookPerCategory.Where(book => book.BookCategoryId == category.Id)){
 
-           
-           
-                
-                <div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
-                    <img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
-                    <h1 class="text-center mt-2">@book.Title</h1>
-                    <p class="text-center">@book.Description</p>
+                    <h1>Distopico</h1>
+                @for (int i = 0; i < Distopico.Count; i++)
+                {
+                     <div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
+                        <img src="@Distopico[i].ImgSource" class="mt-3 mx-1 rounded-3" />
+                        <h1 class="text-center mt-2">@Distopico[i].Title</h1>
+                        <p class="text-center">@Distopico[i].Description</p>
                  
 
 
-                    <div class="text-center mb-3 d-flex justify-content-around">
+                        <div class="text-center mb-3 d-flex justify-content-around">
 
-                        <div class="mt-auto">
+                            <div class="mt-auto">
 
 
-                            <a href="@Url.Action("Details", "Book", new {id = book.Id})">
-                                <button type="button" class="btn btn-secondary btn-sm dettagli btn-warning">Dettagli</button>
-                            </a>
-                        </div>
+                                <a href="@Url.Action("Details", "Book", new {id = @Distopico[i].Id})">
+                                    <button type="button" class="btn btn-secondary btn-sm dettagli btn-warning">Dettagli</button>
+                                </a>
+                            </div>
 
-                        <div class="mt-auto">
-                            <form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-3">
-                                @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-secondary btn-sm dettagli btn-success">
-                                    Acquista
-                                </button>
-                            </form>
-                        </div>
-
-                        
+                            <div class="mt-auto">
+                                <form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@Distopico[i].Id" method="get" class="mt-3">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-secondary btn-sm dettagli btn-success">
+                                        Acquista
+                                    </button>
+                                </form>
+                            </div>
                         
                    
-                    </div>
+                        </div>
 
-                </div>
+                    </div>
+                
+                }
+
+                  
+                        
                             
            
-            }
-            }
+            
 
 
 
