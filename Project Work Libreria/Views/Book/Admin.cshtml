@@ -78,14 +78,14 @@
                                 <!--MODIFICA-->
                                 <div>
                                     <a href="@Url.Action("Update", "Book", new {id = dataModel.Book.Id})">
-                                        <button type="button" class="btn btn-primary btn-sm modifica"><span class="material-icons-outlined">edit</span></button>
+                                        <button type="button" class="button modifica bg-warning"><span class="material-icons-outlined">edit</button>
                                     </a>
                                 </div>
 
 
                                 <!--ELIMINA-->
                                 <div>
-                                    <button type="button" class="btn btn-secondary btn-sm elimina" data-bs-toggle="modal" data-bs-target="#@counter-exampleModal">
+                                    <button type="button" class="button btn-secondary btn-sm elimina bg-danger" data-bs-toggle="modal" data-bs-target="#@counter-exampleModal">
                                         <span class="material-icons-outlined">delete</span>
                                     </button>
                                 </div>
@@ -99,7 +99,7 @@
 
                             
                                 <!-- BOTTONE PER L'ACUISTO DAL FORNITORE CON MODALE -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#PurchaseModal[@counter]">
+                                <button type="button" class="button btn-secondary bg-success" data-bs-toggle="modal" data-bs-target="#PurchaseModal[@counter]">
                                     <span class="material-icons-outlined">
                                         shopping_cart
                                     </span>
