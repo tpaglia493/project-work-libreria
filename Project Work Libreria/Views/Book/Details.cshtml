@@ -108,7 +108,7 @@
     <div class="mt-5 rounded-5 border borders p-3">
     <div class="row">
         <div class="col-6 ">
-            <div class="d-flex  ">
+            <div class="d-flex  align-content-md-center">
             </div>
             <div class="mb-4">
                 <div class="libro">
@@ -120,42 +120,42 @@
           
             </div>
         </div>
-            <div class="col-6 " style="border-left:1px solid white">
+            <div id="border" class="col-lg-6 col-md-12 text-center text-lg-start ">
+                <div >
+                    <div  class="mt-4 ms-1" >
+                         <h3>
+                           Autore:
+                        </h3>
+                        <p>  @Model.Author</p>
+                        <h3>
+                            Descrizione:
+                        </h3>
+                        <p>  @Model.Description</p>
 
-                <div  class="mt-4 ms-1" >
-                     <h3>
-                       Autore:
-                    </h3>
-                    <p>  @Model.Author</p>
-                    <h3>
-                        Descrizione:
-                    </h3>
-                    <p>  @Model.Description</p>
+                        <h3>Prezzo: </h3>
+                        <p>@Model.Price</p>
 
-                <h3>Prezzo: </h3>
-                    <p>@Model.Price</p>
+                        <h4>
+                            Nome libro:
+                        </h4>
 
-                    <h4>
-                        Nome libro:
-                    </h4>
-
-                    <p>  @Model.Title</p>
-
-
+                        <p>  @Model.Title</p>
 
 
-                    <p>
-                        <strong>Categoria:</strong>
-                        @if (Model.Category != null)
-                        {
-                            @Model.Category.Name
-                        }
-                        else
-                        {
-                            <span>Nessuna categoria associata</span>
-                        }
-                    </p>
-                
+
+
+                        <p>
+                            <strong>Categoria:</strong>
+                            @if (Model.Category != null)
+                            {
+                                @Model.Category.Name
+                            }
+                            else
+                            {
+                                <span>Nessuna categoria associata</span>
+                            }
+                        </p>
+                    </div>
                 </div>
         </div>
     </div>

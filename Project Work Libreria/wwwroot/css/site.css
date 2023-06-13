@@ -10,6 +10,19 @@
   }
 }
 
+
+@media (max-width:991px){
+    #border{
+       border-top:1px solid white; 
+       
+    }
+}
+
+@media(min-width:991px){
+    #border{
+        border-left:1px solid white;
+    }
+}
 html {
   position: relative;
   min-height: 100%;
