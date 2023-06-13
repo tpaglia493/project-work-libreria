@@ -1,56 +1,163 @@
 ﻿@model Book
+<style>
+   
 
+    .libro {
+        width: 276px;
+        height: 375px;
+        margin: 20px auto 0;
+        -moz-transform: scaleX(0.88) scaleY(0.95);
+        -moz-perspective: 150px;
+        -moz-perspective-origin: right center;
+        -webkit-perspective: 150px;
+        -webkit-perspective-origin: right center;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: scaleX(0.88) scaleY(0.95);
+        -o-perspective: 150px;
+        -o-perspective-origin: right center;
+        -o-transform-style: preserve-3d;
+        -o-transform: scaleX(0.88) scaleY(0.95);
+        -ms-perspective: 150px;
+        -ms-perspective-origin: right center;
+        -ms-transform-style: preserve-3d;
+        -ms-transform: scaleX(0.88) scaleY(0.95);
+        perspective: 150px;
+        perspective-origin: right center;
+        transform-style: preserve-3d;
+        transform: scaleX(0.88) scaleY(0.95);
+    }
 
-<div class="container  mt-5 rounded-5 border borders ">
+        .libro img {
+            display: block;
+            height: 375px;
+            width: 276px;
+            position: absolute;
+            z-index: 5;
+            -moz-transform: rotateY(-4deg) translateZ(0px);
+            -webkit-transform: rotateY(-4deg) translateZ(0px);
+            -o-transform: rotateY(-4deg) translateZ(0px);
+            -ms-transform: rotateY(-4deg) translateZ(0px);
+            transform: rotateY(-4deg) translateZ(0px);
+        }
 
+        .libro:before, .libro:after {
+            content: '';
+            position: absolute;
+        }
+
+        .libro:before {
+            height: 100%;
+            width: 40px;
+            position: absolute;
+            right: -25px;
+            top: 0%;
+            background: #89221B;
+            z-index: 2;
+            -moz-transform: rotateY(-4deg) translateZ(0px);
+            -webkit-transform: rotateY(-4deg) translateZ(0px);
+            -o-transform: rotateY(-4deg) translateZ(0px);
+            -ms-transform: rotateY(-4deg) translateZ(0px);
+            transform: rotateY(-4deg) translateZ(0px);
+        }
+
+        .libro:after {
+            background: #F5F5F5;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 18px 3px 20px rgba(0, 0, 0, 0.25) inset;
+            height: 98%;
+            width: 30px;
+            right: -19px;
+            top: 1%;
+            z-index: 3;
+            -moz-perspective: 5px;
+            -moz-transform: rotateY(20deg) translateZ(5px);
+            -webkit-perspective: 5px;
+            -webkit-transform: rotateY(20deg) translateZ(5px);
+            -o-perspective: 5px;
+            -o-transform: rotateY(20deg) translateZ(5px);
+            -ms-perspective: 5px;
+            -ms-transform: rotateY(20deg) translateZ(5px);
+            perspective: 5px;
+            transform: rotateY(20deg) translateZ(5px);
+        }
+
+        .libro span {
+            display: block;
+            position: absolute;
+            bottom: -13px;
+            height: 100px;
+            right: -110px;
+            height: 100px;
+            width: 200px;
+            background-image: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.1) 15%);
+            background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.1) 15%);
+            background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.1) 15%);
+            background-image: -ms-linear-gradient(transparent, rgba(0, 0, 0, 0.1) 15%);
+            background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.1) 15%);
+            border-radius: 15px;
+            box-shadow: 5px 12px 15px 5px rgba(0, 0, 0, 0.1);
+            -moz-transform: rotate(5deg) skew(-65deg);
+            -webkit-transform: rotate(5deg) skew(-35deg);
+            -o-transform: rotate(5deg) skew(-35deg);
+            -ms-transform: rotate(5deg) skew(-35deg);
+            transform: rotate(5deg) skew(-35deg);
+        }
+</style>
+       <h1 class="mt-3 mb-3 ms-5 ps-5 mt-5">Dettagli del Libro</h1>
+
+<div class="container  ">
+    <div class="mt-5 rounded-5 border borders p-3">
     <div class="row">
         <div class="col-6 ">
             <div class="d-flex  ">
-                <h1 class="mt-3 mb-3">Dettagli del Libro</h1>
             </div>
             <div class="mb-4">
-                <img class="rounded-4" src="@Model.ImgSource" width="280" alt="Immagine @Model.Title">
+                <div class="libro">
+                    <span></span>
+                    <img src="@Model.ImgSource" alt="@Model.Title" />
+                </div>
             </div>
-            <h3>
-                Nome libro:
-            </h3>
-
-            <p>  @Model.Title</p>
-            <h3>
-                Descrizione:
-            </h3>
-
-            <p>  @Model.Description</p>
-
-            <p>
-                <strong>Categoria:</strong>
-                @if (Model.Category != null)
-                {
-                    @Model.Category.Name
-                }
-                else
-                {
-                    <span>Nessuna categoria associata</span>
-                }
-            </p>
+            <div class="ms-5 ps-4 text-center">
+          
+            </div>
         </div>
-        <div class="col-6">
-            <h3>Autore:</h3>
-            <br>
+            <div class="col-6 " style="border-left:1px solid white">
 
-            <h3>Editore: </h3>
-            <br>
+                <div  class="mt-4 ms-1" >
+                     <h3>
+                       Autore:
+                    </h3>
+                    <p>  @Model.Author</p>
+                    <h3>
+                        Descrizione:
+                    </h3>
+                    <p>  @Model.Description</p>
 
-            <h3>In commercio dal: </h3>
-            <br>
+                <h3>Prezzo: </h3>
+                    <p>@Model.Price</p>
 
-            <h3>Pagine: </h3>
-            <br>
+                    <h4>
+                        Nome libro:
+                    </h4>
 
-            <h3>IBSN: </h3>
-            <br>
-            
+                    <p>  @Model.Title</p>
+
+
+
+
+                    <p>
+                        <strong>Categoria:</strong>
+                        @if (Model.Category != null)
+                        {
+                            @Model.Category.Name
+                        }
+                        else
+                        {
+                            <span>Nessuna categoria associata</span>
+                        }
+                    </p>
+                
+                </div>
         </div>
     </div>
-
+    </div>
 </div>
