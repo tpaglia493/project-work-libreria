@@ -707,6 +707,12 @@ form input {
 */
 
 
+/*Table*/
+thead {
+    
+    background-image: linear-gradient()
+}
+
 /*bottoni admin*/
 .buttons {
     border-radius:10px;
