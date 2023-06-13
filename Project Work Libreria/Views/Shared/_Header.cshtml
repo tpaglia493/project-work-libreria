@@ -25,21 +25,21 @@
 
 <!--corpo dell'offcanvas-->
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start borders" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-        <h3 class="offcanvas-title pt-3" id="offcanvasExampleLabel">Gestisci i tuoi libri</h3>
+        <h3 class="offcanvas-title pt-3 text-white" id="offcanvasExampleLabel">Gestisci i tuoi libri</h3>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body text-white">
 
 
         <ul>
 
             <a href="@Url.Action("Create","Book")"> 
-                <button type="button" class="btn mb-3">Aggiungi un libro</button></a>
+                <button type="button" class="btn mb-3 text-white">Aggiungi un libro</button></a>
         </ul>
         <ul>
-            <button type="button" class="btn mt-3">Aggiungi una categoria</button>
+            <button type="button" class="btn mt-3 text-white">Aggiungi una categoria</button>
 
         </ul>
 
@@ -48,7 +48,7 @@
         <ul>
 
             <a href="@Url.Action("Admin","Book")">
-                <button type="button" class="btn mb-3">Vista Gestionale</button>
+                <button type="button" class="btn mb-3 text-white">Vista Gestionale</button>
             </a>
         </ul>
     </div>
