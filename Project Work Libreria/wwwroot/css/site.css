@@ -460,12 +460,10 @@ button {
     padding: 10px;
     margin: 20px;
     width: 120px;
-    background-color: #ebeef1;
     cursor: pointer;
     border: none;
-    border-radius: 50px;
-    color: #00a037;
-    box-shadow: 10px 10px 10px -1px rgba(10,99,169,.16),-10px -10px 10px -1px rgba(255,255,255, .7);
+    color: #ff800c;
+    transition: box-shadow 400ms ease-in-out, color 400ms ease-in-out;
 }
 
 .btn-lg-r {
@@ -474,12 +472,10 @@ button {
     padding: 10px;
     margin: 20px;
     width: 120px;
-    background-color: #ebeef1;
     cursor: pointer;
     border: none;
-    border-radius: 50px;
-    color: #00a037;
-    box-shadow: inset 10px 10px 10px -1px rgba(10,99,169,.16), inset -10px -10px 10px -1px rgba(255,255,255, .7);
+    color: #ff800c;
+    transition: box-shadow 400ms ease-in-out, color 400ms ease-in-out;
 }
 
 /*bottoni meno larghi*/
@@ -487,13 +483,11 @@ button {
     font-size: 15px;
     font-weight: 500;
     padding: 10px;
-    width: 90px;
-    background-color: #ebeef1;
+    width: 90px;    
     cursor: pointer;
-    border: none;
-    border-radius: 50px;
-    color: #00a037;
-    box-shadow: 10px 10px 10px -1px rgba(10,99,169,.16),-10px -10px 10px -1px rgba(255,255,255, .7);
+    border: none;    
+    color: #ff800c;
+    transition: box-shadow 400ms ease-in-out, color 400ms ease-in-out;
 }
 
 .btn-r {
@@ -501,23 +495,18 @@ button {
     font-weight: 500;
     padding: 10px;
     width: 90px;
-    background-color: #ebeef1;
     cursor: pointer;
     border: none;
-    border-radius: 50px;
-    color: #ed0000;
-    box-shadow: inset 10px 10px 10px -1px rgba(10,99,169,.16), inset -10px -10px 10px -1px rgba(255,255,255, .7);
+    color: #ff800c;
+    transition: box-shadow 400ms ease-in-out, color 400ms ease-in-out;
 }
 
 .card {
     justify-content: center;
     width: 300px;
     margin-left:20px;
-    margin-right:20px;
-    
+    margin-right:20px;    
 }
-
-
 
 .btn:hover {
     background-image: linear-gradient(to top, #FFFFFF 0%, #fccc94 100%);
