@@ -60,15 +60,15 @@
                             
                                 @if(dataModel.Book.AvailableCopies <= 10)
                                 {
-                                    <button class="btn btn-danger pe-none">ATTENZIONE</button>
+                                    <button class="btn btn-danger pe-none mt-0">ATTENZIONE</button>
                                 }
                                 else if (dataModel.Book.AvailableCopies <= 30)
                                 {
-                                    <button class="btn btn-warning pe-none">In esaurimento</button>
+                                    <button class="btn btn-warning pe-none mt-0">In esaurimento</button>
                                             }
                                 else if (dataModel.Book.AvailableCopies > 30)
                                 {
-                                    <button class="btn btn-success pe-none">Vai alla grande</button>
+                                    <button class="btn btn-success pe-none mt-0">Vai alla grande</button>
                                 }
 
                             </td>
@@ -78,28 +78,28 @@
                                 <!--MODIFICA-->
                                 <div>
                                     <a href="@Url.Action("Update", "Book", new {id = dataModel.Book.Id})">
-                                        <button type="button" class="button modifica bg-warning"><span class="material-icons-outlined">edit</button>
-                                    </a>
+                                        <button type="button" class="buttons bg-warning edit"><span class="material-icons-outlined">edit</span></button>
+                                        </a>
                                 </div>
-
+        
 
                                 <!--ELIMINA-->
                                 <div>
-                                    <button type="button" class="button btn-secondary btn-sm elimina bg-danger" data-bs-toggle="modal" data-bs-target="#@counter-exampleModal">
+                                    <button type="button" class="buttons bg-danger delete" data-bs-toggle="modal" data-bs-target="#@counter-exampleModal">
                                         <span class="material-icons-outlined">delete</span>
                                     </button>
                                 </div>
 
                                 <!--DETTAGLI-->
-                                <div>
+                                  <div>
                                     <a href="@Url.Action("Details", "Book", new {id = dataModel.Book.Id})">
-                                        <button type="button" class="btn btn-secondary btn-sm dettagli "><span class="material-icons-outlined"> info</span></button>
+                                        <button type="button" class="buttons bg-info dettagli "><span class="material-icons-outlined"> info</span></button>
                                     </a>
-                                </div>
+                               </div>
 
                             
                                 <!-- BOTTONE PER L'ACUISTO DAL FORNITORE CON MODALE -->
-                                <button type="button" class="button btn-secondary bg-success" data-bs-toggle="modal" data-bs-target="#PurchaseModal[@counter]">
+                                <button type="button" class="buttons buy bg-success" data-bs-toggle="modal" data-bs-target="#PurchaseModal[@counter]">
                                     <span class="material-icons-outlined">
                                         shopping_cart
                                     </span>
