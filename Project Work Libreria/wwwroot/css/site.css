@@ -723,7 +723,7 @@ table {
 } 
 
 
-th {
+.indici {
     background-image: linear-gradient(to bottom , #FFFFFF 0%, #98c8c8 100%);
 }
 
