@@ -20,7 +20,7 @@ namespace Project_Work_Libreria.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=BookShopDB;Integrated Security=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=localhost;MultipleActiveResultSets=True;Initial Catalog=BookShopDB;Integrated Security=True;TrustServerCertificate=True");
         }
 
     }
