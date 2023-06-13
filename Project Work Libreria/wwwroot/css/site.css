@@ -709,7 +709,9 @@ form input {
 
 
 /*Table*/
-
+th{
+    background-color:aquamarine;
+}
 
 /*bottoni admin*/
 .buttons {

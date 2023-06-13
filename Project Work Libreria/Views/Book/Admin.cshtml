@@ -113,12 +113,12 @@
                         <!-------------------------------------------- MODALE PER LA DELETE ----------------------------------------->
                         <div class="modal fade" id="@counter-exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina questo libro</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-content borders">
+                                    <div class="modal-header ">
+                                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Elimina questo libro</h1>
+                                        <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body text-white">
 
 
                                         Vuoi eliminare il libro "<strong>@dataModel.Book.Title</strong>"?
@@ -126,7 +126,7 @@
                                     <div class="modal-footer">
                                         <form asp-controller="Book" asp-action="Delete" asp-route-id="@dataModel.Book.Id" method="post" class="mt-3">
                                             @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-outline-danger btn-sm mt-2">
+                                            <button type="submit" class="btn btn-outline-white btn-sm mt-2 text-white ">
                                                 Conferma
                                             </button>
                                         </form>
@@ -139,9 +139,9 @@
                         <!-- MODALE ACQUISTO -->
                         <div class="modal fade" id="PurchaseModal[@counter]" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content borders">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma acquisto</h1>
+                                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Conferma acquisto</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -151,7 +151,7 @@
                                         </div>
                                        
                                         <input class="d-none" id="@counter-hidden-supplierPrice" value="@dataModel.Book.SupplierPrice"></input>
-                                        <strong>Fornitore:</strong>
+                                        <strong class="text-white">Fornitore:</strong>
                                         <select id="@counter-supplier-input" rows="10" class="d-block w-100">
                                            
                                             <option  value="">Fornitore</option>
@@ -172,7 +172,7 @@
                                         <!--BOTTONE CON FUNZIONE CHE SI RICOLLEGA ALLA CHIAMATA API-->
 
                                         <button type="submit" onclick="BuyFunction(event)" id="@counter" value="@dataModel.Book.Id" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ConfirmModal"
-                                                class="btn btn-outline-danger btn-sm mt-2">
+                                                class="btn btn-outline-white btn-sm mt-2 text-white">
                                             Conferma
                                         </button>
 
