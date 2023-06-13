@@ -3,10 +3,27 @@
 @using Project_Work_Libreria.Models.ModelForViews;
 
 @{
-    List<Book> Distopico = Model.Where(b => b.BookCategoryId == 2).ToList();
-    List<Book> Romanzi = Model.Where(b => b.BookCategoryId == 1).ToList();
-    List<Book>[] arrayLibriPerCategoria = {Distopico, Romanzi};
+    int counter = 0;
+    int count = 0;
 
+    //List<Book> Distopico = Model.Where(b => b.BookCategoryId == 2).ToList();
+    //List<Book> Romanzi = Model.Where(b => b.BookCategoryId == 1).ToList();
+    List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
+    BookCategory cat = new();
+    List<BookCategory> listDiCat = new(); 
+    using(BookShopContext db = new BookShopContext())
+    {
+        List<BookCategory> listBookCategory = db.Categories.ToList();
+        foreach(BookCategory category in listBookCategory)
+        {
+            ++counter;
+            List<Book> listBook = db.Book.Where(b => b.Category.Id == counter).ToList();
+            listLibriPerCategoria.Add(listBook);
+            cat =  db.Categories.Where(c => c.Id == counter).FirstOrDefault();
+            listDiCat.Add(cat);
+
+        }
+    }
 }
 
 <div class="main">
@@ -15,17 +32,16 @@
 
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-
-            @for(int j = 0; j< arrayLibriPerCategoria.Length; j++)
+            
+            @foreach(List<Book> books in listLibriPerCategoria)
             {
 
+               
+                List<Book> listaBook = books;
+               
+                <h1>@cat.Name</h1>
 
-
-                List<Book> listaBook = arrayLibriPerCategoria[j];
-                BookCategory bookCategory = new BookCategory();
-                bookCategory  = listaBook[j].Category;
-
-                <h1>@bookCategory.Name</h1>
+                
                 foreach(Book book in listaBook)
                 {   
                     
@@ -60,6 +76,7 @@
 
                     </div>
                 }
+                ++count;
             }
             
               
