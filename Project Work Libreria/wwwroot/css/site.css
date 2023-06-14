@@ -688,9 +688,14 @@ table {
 
 .purchase {
     width:250px;
-    
+   
 }
 
-.like-btn:hover{
+.like-btn:hover {
     color: red;
+   
+}
+
+.index-btn {
+    padding-top:0;
 }
