@@ -20,7 +20,7 @@
 				int purchaseQuantity = data.Quantity;
 				totalQuantityPurchased += purchaseQuantity;
 
-				if (purchaseQuantity > 20)
+				if (totalQuantityPurchased > 20 && !bestSellers.Contains(book))
 				{
 					bestSellers.Add(book);
 				}
