@@ -5,7 +5,19 @@
 <div class="container login">
     <div class="border borders rounded-5 mt-5">
          <div class="row">
-            <div class="col-lg-6 col-md-8 col-sm-6 m-auto mt-5 ps-5">
+
+            <div class="col-sm-12 col-md-6  m-auto">
+
+
+                <div class="libro">
+                    <span></span>
+                    <img src="@Model.Book.ImgSource" alt="@Model.Book.Title" />
+                </div>
+
+
+            </div>
+
+            <div id="border" class="col-lg-6 col-md-8 col-sm-6 m-auto my-3 ps-5">
                 <h1 class="mb-3">Riepilogo acquisto</h1>
                 <div class=" p-3">
                   <form asp-controller="PurchaseData" asp-action="Create" method="post" asp-route-id="@Model.Book.Id" class="mt-2  mb-2 py-3">
@@ -41,17 +53,7 @@
                 </div>
             </div>
             
-            <div id="border" class="col-sm-12 col-md-6  m-auto">
-
-              
-                    <div class="libro">
-                        <span></span>
-                        <img src="@Model.Book.ImgSource" alt="@Model.Book.Title"/>
-                    </div>
-              
-               
-            </div>
-
+            
           </div>
     </div>
 </div>
