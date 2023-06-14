@@ -101,14 +101,14 @@
 
          function likeFunction(event){
              let id = event.target.value;
-             let inputLikeQuantity = 1;
+ 
       
 console.log(id);
 
 
 
         axios.post('https://localhost:7093/api/LikeApi/AddLike/'+ id,{
-            likeQuantity: inputLikeQuantity
+            quantity: 1
         })
         .then(response => {
 window.location.reload();

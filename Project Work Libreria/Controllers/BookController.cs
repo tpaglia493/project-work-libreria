@@ -59,7 +59,7 @@ namespace Project_Work_Libreria.Controllers
             using (BookShopContext db = new BookShopContext())
             {
 
-
+                data.Book.LikeQuantity = 0;
 
                 db.Book.Add(data.Book);
                 db.SaveChanges();
