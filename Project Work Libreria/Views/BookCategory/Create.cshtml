@@ -9,7 +9,7 @@
             <div class="col-lg-6 col-md-8 col-sm-6  p-4">
                 @Html.AntiForgeryToken()
                 <div class="mb-3 ">
-                    <label asp-for="@Model.Name" class="form-label bianco fw-bold fs-5">Titolo</label>
+                    <label asp-for="@Model.Name" class="form-label bianco fw-bold fs-5">Nome Categoria</label>
                     <input asp-for="@Model.Name" type="text" class="form-control  mt-1" required>
                     <span asp-validation-for="@Model.Name" class="text-danger"></span>
                 </div>
