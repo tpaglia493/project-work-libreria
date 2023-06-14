@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav philosopher">
 
                 <a class="btn btn-lg-r" href="@Url.Action("Index","Book")">HOME</a>
 
@@ -15,7 +15,7 @@
                     ADMIN TOOLS
                     </a>
                 }
-                <div class="mt-4">   <partial name="_LoginPartial" /></div>
+                <div class="my-auto">   <partial name="_LoginPartial" /></div>
              
             
             </div>
@@ -27,7 +27,7 @@
 
 <div class="offcanvas offcanvas-start borders" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-        <h3 class="offcanvas-title pt-3 text-white" id="offcanvasExampleLabel">Gestisci i tuoi libri</h3>
+        <h3 class="offcanvas-title pt-3 text-white philosopher" id="offcanvasExampleLabel">Gestisci i tuoi libri</h3>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body text-white">
@@ -36,18 +36,19 @@
         <ul>
 
             <a href="@Url.Action("Create","Book")"> 
-                <button type="button" class="btn mb-3 text-white">Aggiungi un libro</button></a>
+                <button type="button" class="btn mb-3 text-white philosopher">Aggiungi un libro</button>
+            </a>
         </ul>
 
         <ul>
-            <button type="button" class="btn mt-3 text-white">Aggiungi una categoria</button>
+            <button type="button" class="btn mt-3 text-white philosopher">Aggiungi una categoria</button>
 
         </ul>
 
         <ul>
 
             <a href="@Url.Action("Admin","Book")">
-                <button type="button" class="btn mb-3 text-white">Vista Gestionale</button>
+                <button type="button" class="btn mb-3 text-white philosopher">Vista Gestionale</button>
             </a>
         </ul>
     </div>

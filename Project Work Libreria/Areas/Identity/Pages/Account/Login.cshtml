@@ -6,9 +6,9 @@
 }
 
 <div class="container mt-5 bianco">
-    <h1>@ViewData["Title"]</h1>
+    <h1 class="philosopher">@ViewData["Title"]</h1>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 p-3 justify-content-around">
             <section>
                 <form id="account" method="post">
                     <h2>Accedi con le tue credenziali.</h2>
@@ -33,18 +33,16 @@
                         </div>
                     </div>
                     <div>
-                        <button id="login-submit" type="submit" class="w-100 btn btn-lg border rounded-3 bianco">Log in</button>
+                        <button id="login-submit" type="submit" class="w-100 btn btn-lg-n bianco m-0">Log in</button>
                     </div>
                     <div class="col mt-2">
                         <p>
-                          <p> Hai dimenticato la password? <a id="forgot-password" asp-page="./ForgotPassword">Recupera password</a></p>
+                            <a id="forgot-password" asp-page="./ForgotPassword">Password dimenticata?</a>
                         </p>
                         <p>
-                            Non hai un account?
-                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrati</a>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registra un nuovo utente</a>
                         </p>
                         <p>
-                       
                             <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Rinvia email di conferma</a>
                         </p>
                     </div>
@@ -52,10 +50,10 @@
             </section>
         </div>
 
-        <div class="col-md-6 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <section>
-                <h3>Leggere è dare libertà alla mente e capire che non è mai stata prigioniera.</h3>
-                <hr />
+                <h3 class="allura mb-3">Leggere è dare libertà alla mente e capire che non è mai stata priggioniera.</h3>
+                
                 <img src="https://goodereader.com/blog/wp-content/uploads/images/girl-reading-book-1024x599.jpg" class="shadow-lg p-3 mb-5" alt="Banbina con libro" height="400"></img>
 
 

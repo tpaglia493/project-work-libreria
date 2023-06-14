@@ -1,18 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Josefin+Slab&family=Philosopher&display=swap');
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Philosopher', sans-serif;
+    box-sizing: border-box;    
+    font-family: 'Josefin Slab', serif;    
 }
+
+
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
+.allura {
+    font-family: 'Allura', cursive;
+    font-size: 40px;
+}
+
+.philosopher {
+    font-family: 'Philosopher', sans-serif;
+}
 
 @media (max-width:991px){
     #border{
@@ -41,6 +51,10 @@ body {
     
     background-size:cover;
 }
+
+
+
+
 /*INIZIO LIBRO 3D DELLA PAGINA DETAILS*/
 .libro {
     width: 276px;
@@ -523,7 +537,6 @@ button {
 .bianco {
     color: white;
 }
-
 
 
 .borders {
