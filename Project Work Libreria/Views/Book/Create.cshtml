@@ -31,7 +31,7 @@
 
                     <div class="mb-3">
                         <strong class="bianco fw-bold fs-5">Categorie:</strong>
-                        <select asp-for="Book.BookCategoryId" rows="10" class="d-block w-100">
+                    <select asp-for="Book.BookCategoryId" rows="10" class="d-block w-100 form-select form-select-sm">
                             <option value=""></option>
                             @foreach (BookCategory category in Model.BookCategories)
                             {
