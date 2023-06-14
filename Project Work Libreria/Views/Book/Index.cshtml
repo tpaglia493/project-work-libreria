@@ -3,26 +3,47 @@
 @using Project_Work_Libreria.Models.ModelForViews;
 
 @{
-    int counter = 0;
-    int count = 0;
+	int counter = 0;
+	int count = 0;
 
-    
-    List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
-    BookCategory cat = new();
-    List<BookCategory> listDiCat = new(); 
-    using(BookShopContext db = new BookShopContext())
-    {
-        List<BookCategory> listBookCategory = db.Categories.ToList();
-        foreach(BookCategory category in listBookCategory)
-        {
-            ++counter;
-            List<Book> listBook = db.Book.Where(b => b.Category.Id == counter).ToList();
-            listLibriPerCategoria.Add(listBook);
-            cat =  db.Categories.Where(c => c.Id == counter).FirstOrDefault();
-            listDiCat.Add(cat);
+	List<Book> bestSellers = new();
+	List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
+	BookCategory cat = new();
+	List<BookCategory> listDiCat = new();
+	int totalQuantityPurchased = 0;
+	using(BookShopContext db = new BookShopContext())
+	{
+		foreach(Book book in Model)
+		{
+			foreach(PurchaseData data in book.PurchaseDatas)
+			{
+				int purchaseQuantity = data.Quantity;
+				totalQuantityPurchased += purchaseQuantity;
 
-        }
-    }
+				if (purchaseQuantity > 20)
+				{
+					bestSellers.Add(book);
+				}
+
+			}
+		}
+
+	
+
+
+		List<BookCategory> listBookCategory = db.Categories.ToList();
+		foreach(BookCategory category in listBookCategory)
+		{
+			++counter;
+			List<Book> listBook = db.Book.Where(b => b.Category.Id == counter).ToList();
+			listLibriPerCategoria.Add(listBook);
+			cat =  db.Categories.Where(c => c.Id == counter).FirstOrDefault();
+			listDiCat.Add(cat);
+
+		}
+	}
+
+	
 }
 
 <style>
@@ -212,9 +233,69 @@
 			}</style>
 <div class="main">
     <h1 class="text-center mb-0 mt-3 bianco">La tua libreria</h1>
+
+
+
+    <div class="container">
+
+        <h1>Best Seller</h1>
+
+		@foreach(Book book in bestSellers)
+		{
+
+		<div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
+			<img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
+			<h1 class="text-center mt-2">@book.Title</h1>
+
+
+
+
+			<div class="text-center mb-3 mt-0 d-flex justify-content-around">
+
+				<div class="mt-auto">
+
+
+					<a href="@Url.Action("Details", "Book", new {id = book.Id})">
+						<button type="button" class="btn btn-n btn-sm dettagli">Dettagli</button>
+					</a>
+				</div>
+
+				<div class="mt-auto">
+
+					<div class="like">
+						<div class="icon">
+							<svg viewBox="0 0 24 24">
+								<path d="M2.9219 12.4463C1.8489 9.0963 3.1039 4.9313 6.6209 3.7993C8.4709 3.2023 10.7539 3.7003 12.0509 5.4893C13.2739 3.6343 15.6229 3.2063 17.4709 3.7993C20.9869 4.9313 22.2489 9.0963 21.1769 12.4463C19.5069 17.7563 13.6799 20.5223 12.0509 20.5223C10.4229 20.5223 4.6479 17.8183 2.9219 12.4463Z" />
+							</svg>
+						</div>
+						<div class="shadow"></div>
+						<div class="number">@book.LikeQuantity</div>
+						<div class="bookId d-none">@book.Id</div>
+					</div>
+
+				</div>
+
+				<div class="mt-auto">
+					<form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-3">
+						@Html.AntiForgeryToken()
+						<button type="submit" class="btn btn-r btn-sm dettagli">
+							Acquista
+						</button>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+		}
+
+
+	</div>
       
 
 <div class="container mt-5 mb-5">
+
+
     <div class="row justify-content-center">
             
             @foreach(List<Book> books in listLibriPerCategoria)
