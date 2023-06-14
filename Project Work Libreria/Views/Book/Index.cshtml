@@ -257,7 +257,8 @@
                                         </svg>
                                     </div>
                                     <div class="shadow"></div>
-                                    <div class="number">232</div>
+                                    <div class="number">@book.LikeQuantity</div>
+                                    <div class="bookId d-none">@book.Id</div>
                                 </div>
 
                             </div>
@@ -286,26 +287,29 @@
 	document.querySelectorAll('.like').forEach((button) => {
    button.addEventListener('click', (e) => {
       let number = button.children[2].textContent;
+	  let bookId = button.children[3].textContent;
       if (!button.classList.contains('active')) {
          button.classList.add('active');
+		 likeFunction(event, 1, bookId);
+
          button.children[2].textContent = parseInt(number) + 1;
       } else {
          button.classList.remove('active');
+		 likeFunction(event, -1, bookId)
          button.children[2].textContent = parseInt(number) - 1;
       }
    });
 });
 
 
-         function likeFunction(event){
-             let id = event.target.value;
-
+         function likeFunction(event, number, id){
+           
 
         axios.post('https://localhost:7093/api/LikeApi/AddLike/'+ id,{
-            quantity: 1
+            quantity: number
         })
         .then(response => {
-window.location.reload();
+
 console.log(response.data);
 })
 .catch(error => {
