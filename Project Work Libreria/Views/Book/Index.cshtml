@@ -71,7 +71,16 @@
                                     </button>
                                 </form>
                             </div>
+                            <div class="mt-auto">
 
+                                <form asp-controller="Book" asp-action="AddLike" asp-route-id="@book.Id" method="post" class="mt-3">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-r btn-sm dettagli">
+                                        Acquista
+                                    </button>
+                                </form>
+                            
+                            </div>
 
                         </div>
 
@@ -83,3 +92,40 @@
     </div>
 </div>
 
+<!--PROVA LIKE CON API-->
+@*@section Scripts{
+
+
+
+         function likeFunction(event){
+        
+let bookIdValue= event.target.value;
+console.log(bookId);
+
+
+        axios.post('https://localhost:7093/api/LikeApi/Create',{
+        
+     
+        bookId: bookIdValue
+     
+
+        }
+
+
+        )
+        .then(response => {
+window.location.reload();
+console.log(response.data);
+})
+.catch(error => {
+console.error(error.response.data);
+})
+
+ }
+
+}
+
+
+}
+
+*@
