@@ -233,7 +233,7 @@ namespace Project_Work_Libreria.Controllers
             using (BookShopContext db = new BookShopContext())
             {
                 Book likedBook = db.Book.Where(b => b.Id == id).FirstOrDefault();
-                likedBook.LikeQuantity = +1;
+                likedBook.LikeQuantity += +1;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Book");
             }

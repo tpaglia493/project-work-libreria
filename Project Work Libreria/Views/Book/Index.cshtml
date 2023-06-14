@@ -63,10 +63,15 @@
                                 </a>
                             </div>
 
-                            <button class="like-btn">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
+                            <div class="mt-auto">
 
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" onclick="likeFunction(event)" value="@book.Id" id="@book.LikeQuantity" class="like-btn">
+                                    &#10084;
+                                    </button>
+                                
+
+                            </div>
 
                             <div class="mt-auto">
                                 <form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-3">
@@ -76,17 +81,7 @@
                                     </button>
                                 </form>
                             </div>
-                            <div class="mt-auto">
-
-                                <form asp-controller="Book" asp-action="AddLike" asp-route-id="@book.Id" method="post" class="mt-3">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-r btn-sm dettagli">
-                                        Acquista
-                                    </button>
-                                </form>
                             
-                            </div>
-
                         </div>
 
                     </div>
@@ -98,26 +93,23 @@
 </div>
 
 <!--PROVA LIKE CON API-->
-@*@section Scripts{
+@section Scripts{
+
+   
 
 
 
          function likeFunction(event){
-        
-let bookIdValue= event.target.value;
-console.log(bookId);
+             let id = event.target.value;
+             let inputLikeQuantity = 1;
+      
+console.log(id);
 
 
-        axios.post('https://localhost:7093/api/LikeApi/Create',{
-        
-     
-        bookId: bookIdValue
-     
 
-        }
-
-
-        )
+        axios.post('https://localhost:7093/api/LikeApi/AddLike/'+ id,{
+            likeQuantity: inputLikeQuantity
+        })
         .then(response => {
 window.location.reload();
 console.log(response.data);
@@ -133,4 +125,3 @@ console.error(error.response.data);
 
 }
 
-*@
