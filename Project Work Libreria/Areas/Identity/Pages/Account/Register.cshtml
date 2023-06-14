@@ -4,7 +4,7 @@
     ViewData["Title"] = "Register";
 }
 <div class="container mt-5 bianco">
-    <h1>@ViewData["Title"]</h1>
+    <h1 class="philosopher">@ViewData["Title"]</h1>
 
 
     <div class="row">
@@ -28,13 +28,13 @@
                     <label asp-for="Input.ConfirmPassword"></label>
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
-                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn bianco border rounded-3">Register</button>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg-n bianco m-0">Register</button>
             </form>
         </div>
-        <div class="col-md-6 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <section>
-                <h3 class="bianco">"Così tanti libri, così poco tempo." - Frank Zappa.</h3>
-                <hr />
+                <h3 class="bianco allura mb-3">"Così tanti libri, così poco tempo." - Frank Zappa.</h3>
+                
                 <img src="https://myadventuresininclusion.com/wp-content/uploads/2017/10/iStock-690358116-768x512.jpg" class="shadow-lg p-3 mb-5" alt="Torre Libri" height="400"></img>
                 
             </section>

@@ -10,7 +10,7 @@
 
 </style>
 <div class="container ">
-    <div class="mt-5"> <h1 class="mb-3  bianco">Aggiungi libro</h1> </div>
+    <div class="mt-5"> <h1 class="mb-3  bianco philosopher">Aggiungi libro</h1> </div>
            
 
             <form asp-controller="Book" asp-action="Create" method="post" class="mt-2 py-3">
@@ -18,19 +18,19 @@
                 <div class="col-lg-6 col-md-8 col-sm-6  p-4">
                     @Html.AntiForgeryToken()
                     <div class="mb-3 ">
-                        <label asp-for="Book.Title" class="form-label bianco fw-bold fs-5">Titolo</label>
+                        <label asp-for="Book.Title" class="form-label bianco fw-bold fs-5 philosopher">Titolo</label>
                         <input asp-for="Book.Title" type="text" class="form-control  mt-1" required>
                         <span asp-validation-for="Book.Title" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Book.Author" class="form-label bianco fw-bold fs-5"> Autore</label>
+                        <label asp-for="Book.Author" class="form-label bianco fw-bold fs-5 philosopher"> Autore</label>
                         <input asp-for="Book.Author" type="text" class="form-control mt-1" required>
                         <span asp-validation-for="Book.Author" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <strong class="bianco fw-bold fs-5">Categorie:</strong>
+                        <strong class="bianco fw-bold fs-5 philosopher">Categorie:</strong>
                         <select asp-for="Book.BookCategoryId" rows="10" class="d-block w-100">
                             <option value=""></option>
                             @foreach (BookCategory category in Model.BookCategories)
@@ -47,7 +47,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="Book.ImgSource" class="form-label fw-bold fs-5 bianco">URL Immagine</label>
+                        <label asp-for="Book.ImgSource" class="form-label fw-bold fs-5 bianco philosopher">URL Immagine</label>
                         <input asp-for="Book.ImgSource" type="text" class="form-control mt-1" required>
                         <span asp-validation-for="Book.ImgSource" class="text-danger"></span>
                     </div>
@@ -56,7 +56,7 @@
                 <div class="col-lg-6 p-4">
 
                     <div class="mb-3">
-                        <label asp-for="Book.Description" class="form-label bianco fw-bold fs-5">Descrizione</label>
+                        <label asp-for="Book.Description" class="form-label bianco fw-bold fs-5 philosopher">Descrizione</label>
                         <textarea asp-for="Book.Description" rows="6" class="form-control mt-1"></textarea>
                         <span asp-validation-for="Book.Description" class="text-danger"></span>
                     </div>
@@ -64,13 +64,13 @@
                     <div class="row">
 
                         <div class="mb-3 col-6">
-                                <label asp-for="Book.Price" class="form-label bianco fw-bold fs-5">Prezzo</label>
+                            <label asp-for="Book.Price" class="form-label bianco fw-bold fs-5 philosopher">Prezzo</label>
                             <input asp-for="Book.Price" type="text" class="form-control mt-1" required>
                             <span asp-validation-for="Book.Price" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3 col-6">
-                            <label asp-for="Book.AvailableCopies" class="form-label bianco fw-bold fs-5">Quantità in magazzino</label>
+                            <label asp-for="Book.AvailableCopies" class="form-label bianco fw-bold fs-5 philosopher">Quantità in magazzino</label>
                             <input asp-for="Book.AvailableCopies" value="0" type="text" class="form-control mt-1" required>
                             <span asp-validation-for="Book.AvailableCopies" class="text-danger"></span>
                         </div>
@@ -84,7 +84,7 @@
                         <div  class="button">
                             <div class="button__line"></div>
                             <div class="button__line"></div>
-                            <button type="submit"><span class="button__text">Salva</span></button>
+                            <button type="submit"><span class="button__text philosopher">Salva</span></button>
                             <div class="button__drow1"></div>
                             <div class="button__drow2"></div>
                         </div>
