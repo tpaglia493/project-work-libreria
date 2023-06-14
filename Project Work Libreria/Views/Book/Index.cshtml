@@ -76,10 +76,7 @@
                                     </button>
                                 </form>
                             </div>
-
-                            
-                               
-
+                           
 
                         </div>
 
@@ -91,3 +88,40 @@
     </div>
 </div>
 
+<!--PROVA LIKE CON API-->
+@*@section Scripts{
+
+
+
+         function likeFunction(event){
+        
+let bookIdValue= event.target.value;
+console.log(bookId);
+
+
+        axios.post('https://localhost:7093/api/LikeApi/Create',{
+        
+     
+        bookId: bookIdValue
+     
+
+        }
+
+
+        )
+        .then(response => {
+window.location.reload();
+console.log(response.data);
+})
+.catch(error => {
+console.error(error.response.data);
+})
+
+ }
+
+}
+
+
+}
+
+*@

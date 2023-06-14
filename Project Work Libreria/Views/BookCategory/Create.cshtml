@@ -1,0 +1,33 @@
+﻿@model BookCategory
+
+<div class="container ">
+    <div class="mt-5"> <h1 class="mb-3  bianco">Aggiungi libro</h1> </div>
+
+
+    <form asp-controller="BookCategory" asp-action="Create" method="post" class="mt-2 py-3">
+        <div class="row mt-5 borders border rounded-5 ps-4 pe-4 pt-4 pb-3">
+            <div class="col-lg-6 col-md-8 col-sm-6  p-4">
+                @Html.AntiForgeryToken()
+                <div class="mb-3 ">
+                    <label asp-for="@Model.Name" class="form-label bianco fw-bold fs-5">Titolo</label>
+                    <input asp-for="@Model.Name" type="text" class="form-control  mt-1" required>
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-6 text-center">
+
+                    <div class="button">
+                        <div class="button__line"></div>
+                        <div class="button__line"></div>
+                        <button type="submit"><span class="button__text">Salva</span></button>
+                        <div class="button__drow1"></div>
+                        <div class="button__drow2"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>

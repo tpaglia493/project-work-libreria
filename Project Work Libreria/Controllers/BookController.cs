@@ -12,7 +12,7 @@ namespace Project_Work_Libreria.Controllers
     {
         //*********************** GET LISTA DI LIBRI CON LA LORO CATEGORIA **************************
 
-        
+
         public IActionResult Index()
         {
             using (BookShopContext db = new BookShopContext())
@@ -226,6 +226,18 @@ namespace Project_Work_Libreria.Controllers
                 return View("Admin", listOfModels);
             }
         }
+        //*********************** AGGIUNGERE UN LIKE **************************
+        public IActionResult AddLike(int id)
+        {
 
+            using (BookShopContext db = new BookShopContext())
+            {
+                Book likedBook = db.Book.Where(b => b.Id == id).FirstOrDefault();
+                likedBook.LikeQuantity = +1;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Book");
+            }
+
+        }
     }
 }

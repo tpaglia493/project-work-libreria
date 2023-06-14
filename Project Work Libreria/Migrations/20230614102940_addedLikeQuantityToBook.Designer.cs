@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Work_Libreria.Database;
 
@@ -11,9 +12,11 @@ using Project_Work_Libreria.Database;
 namespace Project_Work_Libreria.Migrations
 {
     [DbContext(typeof(BookShopContext))]
-    partial class BookShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230614102940_addedLikeQuantityToBook")]
+    partial class addedLikeQuantityToBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -319,6 +322,24 @@ namespace Project_Work_Libreria.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Project_Work_Libreria.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("Like");
+                });
+
             modelBuilder.Entity("Project_Work_Libreria.Models.PurchaseData", b =>
                 {
                     b.Property<int>("Id")
@@ -437,6 +458,17 @@ namespace Project_Work_Libreria.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Project_Work_Libreria.Models.Like", b =>
+                {
+                    b.HasOne("Project_Work_Libreria.Models.Book", "Book")
+                        .WithMany("Likes")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("Project_Work_Libreria.Models.PurchaseData", b =>
                 {
                     b.HasOne("Project_Work_Libreria.Models.Book", "PurchasedBook")
@@ -449,6 +481,8 @@ namespace Project_Work_Libreria.Migrations
             modelBuilder.Entity("Project_Work_Libreria.Models.Book", b =>
                 {
                     b.Navigation("AdminPurchaseDatas");
+
+                    b.Navigation("Likes");
 
                     b.Navigation("PurchaseDatas");
                 });

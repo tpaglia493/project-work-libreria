@@ -18,6 +18,8 @@ namespace Project_Work_Libreria.Database
         public DbSet<Supplier> Supplier { get; set; }
 
 
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=localhost;MultipleActiveResultSets=True;Initial Catalog=BookShopDB;Integrated Security=True;TrustServerCertificate=True");
