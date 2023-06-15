@@ -707,7 +707,7 @@ form input {
 }
 
 
-@media(min-width: 768px) {
+@media(max-width: 768px) {
     .disappear-on-media  {
       display:none;
     }
