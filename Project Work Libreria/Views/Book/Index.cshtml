@@ -5,24 +5,26 @@
 @{
 	int counter = 0;
 	int count = 0;
-
+	int bestSellerCounter = 0;
 	List<Book> bestSellers = new();
 	List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
 	BookCategory cat = new();
 	List<BookCategory> listDiCat = new();
-	int totalQuantityPurchased = 0;
+	
+	List<Book> SortedList = new();
 	using(BookShopContext db = new BookShopContext())
 	{
 		foreach(Book book in Model)
 		{
 			
 					bestSellers.Add(book);
-					bestSellers.OrderByDescending(b=> b.PurchaseQuantity).ToList();
+	
 				
 
 		}
 
-	
+		SortedList =	bestSellers.OrderByDescending(b=> b.PurchaseQuantity).ToList();
+
 
 
 		List<BookCategory> listBookCategory = db.Categories.ToList();
@@ -243,8 +245,13 @@
 
         <h1 class="philosopher">Best Seller</h1>
 
-		@foreach(Book book in bestSellers)
+		@foreach(Book book in SortedList)
 		{
+				++bestSellerCounter;
+				if (bestSellerCounter > 3)
+				{
+					break;
+				}
 
 		<div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
 			<img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
