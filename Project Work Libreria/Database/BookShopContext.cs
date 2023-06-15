@@ -17,7 +17,7 @@ namespace Project_Work_Libreria.Database
 
         public DbSet<Supplier> Supplier { get; set; }
 
-
+        public DbSet<Like> Like { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

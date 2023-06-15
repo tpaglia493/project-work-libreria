@@ -3,33 +3,308 @@
 @using Project_Work_Libreria.Models.ModelForViews;
 
 @{
-    int counter = 0;
-    int count = 0;
+	int counter = 0;
+	int count = 0;
 
-    
-    List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
-    BookCategory cat = new();
-    List<BookCategory> listDiCat = new(); 
-    using(BookShopContext db = new BookShopContext())
-    {
-        List<BookCategory> listBookCategory = db.Categories.ToList();
-        foreach(BookCategory category in listBookCategory)
-        {
-            ++counter;
-            List<Book> listBook = db.Book.Where(b => b.Category.Id == counter).ToList();
-            listLibriPerCategoria.Add(listBook);
-            cat =  db.Categories.Where(c => c.Id == counter).FirstOrDefault();
-            listDiCat.Add(cat);
+	List<Book> bestSellers = new();
+	List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
+	BookCategory cat = new();
+	List<BookCategory> listDiCat = new();
+	int totalQuantityPurchased = 0;
+	using(BookShopContext db = new BookShopContext())
+	{
+		foreach(Book book in Model)
+		{
+			foreach(PurchaseData data in book.PurchaseDatas)
+			{
+				int purchaseQuantity = data.Quantity;
+				totalQuantityPurchased += purchaseQuantity;
 
-        }
-    }
+				if (totalQuantityPurchased > 20 && !bestSellers.Contains(book))
+				{
+					bestSellers.Add(book);
+				}
+
+			}
+		}
+
+	
+
+
+		List<BookCategory> listBookCategory = db.Categories.ToList();
+		foreach(BookCategory category in listBookCategory)
+		{
+			++counter;
+			List<Book> listBook = db.Book.Where(b => b.Category.Id == counter).ToList();
+			listLibriPerCategoria.Add(listBook);
+			cat =  db.Categories.Where(c => c.Id == counter).FirstOrDefault();
+			listDiCat.Add(cat);
+
+		}
+	}
+
+	
 }
 
-<div class="main mt-5">
-    <h1 class="text-center mb-0 mt-3 bianco philosopher">I Nostri Libri</h1>
+
+
+
+
+<style>
+
+	.like {
+		--color: #000;
+		
+		--stroke: #6B7280;
+		
+		--fill: #E5E7EB;
+		--a-color: #FF0000;
+		
+		--a-stroke: #E06469;
+		--a-border-color: #FEA1A1;
+		--a-fill: #FEA1A1;
+		--height: 66px;
+		--width: 66px;
+		--radius: 6px;
+		--duration: 0.3s;
+		--function: cubic-bezier(0, 0.88, 0.46, 1.36);
+		
+		position: relative;
+		background: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: var(--height);
+		width: var(--width);
+		padding: 0;
+		margin: 0;
+		user-select: none;
+		outline: none;
+		cursor: pointer;
+		-webkit-appearance: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+		.like:hover:before {
+			--b-shadow: 0 0 4px 1px var(--shadow);
+		}
+
+		.like:hover .icon {
+			--i-bottom: 3px;
+		}
+
+		.like:hover .shadow {
+			--s-opacity: 1;
+		}
+
+		.like:active:before {
+			--b-height: calc(var(--height) + 2px);
+			--b-radius: calc(var(--radius) * 5) calc(var(--radius) * 5) var(--radius) var(--radius) / calc(var(--radius) * 1.6) calc(var(--radius) * 1.6) var(--radius) var(--radius);
+		}
+
+		.like:active .icon {
+			--i-bottom: 17px;
+		}
+
+		.like:active .shadow {
+			--s-width: 20px;
+		}
+
+		.like:active .number {
+			--n-top: 2px;
+		}
+
+		.like.active:before {
+			--background: var(--a-background);
+			
+		}
+
+		.like.active .icon {
+			--fill: var(--a-border-color);
+			--stroke: var(--a-stroke);
+		}
+
+		.like.active .number {
+			--color: var(--a-color);
+		}
+
+		.like:before {
+			--delay: 50ms;
+			content: "";
+			z-index: -1;
+			position: absolute;
+			bottom: 0;
+			background: var(--background);
+			border: 1px solid var(--border, var(--border-color));
+			height: var(--b-height, calc(100% - 2px));
+			width: var(--b-width, calc(100% - 2px));
+			box-shadow: var(--b-shadow, none);
+			border-radius: var(--b-radius, var(--radius));
+			transition: border-radius var(--duration) var(--function) var(--delay), height var(--duration) var(--function) var(--delay);
+		}
+
+		.like .icon {
+			--size: 24px;
+			position: relative;
+			display: flex;
+			bottom: var(--i-bottom, 0);
+			transition: bottom var(--duration) var(--function);
+		}
+
+			.like .icon svg {
+				fill: var(--fill);
+				stroke: var(--stroke);
+				width: var(--size);
+				height: var(--size);
+				stroke-width: 1.5;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+			}
+
+		.like .shadow {
+			position: absolute;
+			background: var(--shadow);
+			top: calc(var(--height) - 45%);
+			border-radius: 50%;
+			height: 2px;
+			width: var(--s-width, 14px);
+			opacity: var(--s-opacity, 0);
+			filter: blur(1px);
+			transition: width var(--duration) var(--function), opacity var(--duration) var(--function);
+		}
+
+		.like .number {
+			color: var(--color);
+			position: relative;
+			font-weight: 500;
+			margin-top: 3px;
+			top: var(--n-top, 0);
+			transition: top var(--duration) var(--function);
+		}
+
+	article {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 20px;
+		padding: 10px;
+		width: 666px;
+	}
+
+		article .content {
+			box-shadow: 0px 1px 0px #E5E7EB;
+		}
+
+			article .content h1 {
+				font-weight: 600;
+				font-size: 20px;
+				margin-bottom: 0.4em;
+				line-height: 1.4;
+			}
+
+			article .content span {
+				color: #6B7280;
+				font-size: 14px;
+			}
+
+			article .content p {
+				margin-top: 0.7em;
+				margin-bottom: 1.25em;
+				color: #4B5563;
+				line-height: 1.4;
+			}
+
+	body .socials {
+		position: fixed;
+		display: flex;
+		right: 20px;
+		bottom: 20px;
+	}
+
+		body .socials > a {
+			display: block;
+			height: 28px;
+			margin-left: 15px;
+		}
+
+			body .socials > a.dribbble img {
+				height: 28px;
+			}
+
+			body .socials > a.twitter svg {
+				width: 32px;
+				height: 32px;
+				fill: #1DA1F2;
+			}
+			
+		</style>
+<div class="main">
+    <h1 class="text-center mb-0 mt-3 bianco">La tua libreria</h1>
+
+
+
+    <div class="container">
+
+        <div class="row">
+
+        <h1>Best Seller</h1>
+
+		@foreach(Book book in bestSellers)
+		{
+
+		<div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
+			<img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
+			<h1 class="text-center mt-2">@book.Title</h1>
+
+
+
+
+			<div class="text-center mb-3 mt-0 d-flex justify-content-around">
+
+				<div class="mt-auto">
+
+
+					<a href="@Url.Action("Details", "Book", new {id = book.Id})">
+						<button type="button" class="btn btn-n btn-sm dettagli">Dettagli</button>
+					</a>
+				</div>
+
+				<div class="mt-auto">
+
+					<div class="like">
+						<div class="icon">
+							<svg viewBox="0 0 24 24">
+								<path d="M2.9219 12.4463C1.8489 9.0963 3.1039 4.9313 6.6209 3.7993C8.4709 3.2023 10.7539 3.7003 12.0509 5.4893C13.2739 3.6343 15.6229 3.2063 17.4709 3.7993C20.9869 4.9313 22.2489 9.0963 21.1769 12.4463C19.5069 17.7563 13.6799 20.5223 12.0509 20.5223C10.4229 20.5223 4.6479 17.8183 2.9219 12.4463Z" />
+							</svg>
+						</div>
+						<div class="shadow"></div>
+						<div class="number">@book.LikeQuantity</div>
+						<div class="bookId d-none">@book.Id</div>
+					</div>
+
+				</div>
+
+				<div class="mt-auto">
+					<form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-3">
+						@Html.AntiForgeryToken()
+						<button type="submit" class="btn btn-r btn-sm dettagli">
+							Acquista
+						</button>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+		}
+
+		</div>
+	</div>
       
 
 <div class="container mt-5 mb-5">
+
+
     <div class="row justify-content-center">
             
             @foreach(List<Book> books in listLibriPerCategoria)
@@ -51,8 +326,6 @@
                         <h1 class="text-center mt-2 philosopher">@book.Title</h1>
                      
 
-
-
                         <div class="text-center mb-3 mt-0 d-flex justify-content-around">
 
                             <div class="mt-auto">
@@ -63,10 +336,20 @@
                                 </a>
                             </div>
 
-                            <button class="like-btn">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
+                            <div class="mt-auto">
 
+                                <div class="like">
+                                    <div class="icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M2.9219 12.4463C1.8489 9.0963 3.1039 4.9313 6.6209 3.7993C8.4709 3.2023 10.7539 3.7003 12.0509 5.4893C13.2739 3.6343 15.6229 3.2063 17.4709 3.7993C20.9869 4.9313 22.2489 9.0963 21.1769 12.4463C19.5069 17.7563 13.6799 20.5223 12.0509 20.5223C10.4229 20.5223 4.6479 17.8183 2.9219 12.4463Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="shadow"></div>
+                                    <div class="number">@book.LikeQuantity</div>
+                                    <div class="bookId d-none">@book.Id</div>
+                                </div>
+
+                            </div>
 
                             <div class="mt-auto">
                                 <form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-1">
@@ -76,11 +359,13 @@
                                     </button>
                                 </form>
                             </div>
-                           
-
+                            
                         </div>
 
                     </div>
+
+
+
                 }
                 ++count;
             }
@@ -89,28 +374,33 @@
 </div>
 
 <!--PROVA LIKE CON API-->
-@*@section Scripts{
+@section Scripts{
+	document.querySelectorAll('.like').forEach((button) => {
+   button.addEventListener('click', (e) => {
+      let number = button.children[2].textContent;
+	  let bookId = button.children[3].textContent;
+      if (!button.classList.contains('active')) {
+         button.classList.add('active');
+		 likeFunction(event, 1, bookId);
+
+         button.children[2].textContent = parseInt(number) + 1;
+      } else {
+         button.classList.remove('active');
+		 likeFunction(event, -1, bookId)
+         button.children[2].textContent = parseInt(number) - 1;
+      }
+   });
+});
 
 
+         function likeFunction(event, number, id){
+           
 
-         function likeFunction(event){
-        
-let bookIdValue= event.target.value;
-console.log(bookId);
-
-
-        axios.post('https://localhost:7093/api/LikeApi/Create',{
-        
-     
-        bookId: bookIdValue
-     
-
-        }
-
-
-        )
+        axios.post('https://localhost:7093/api/LikeApi/AddLike/'+ id,{
+            quantity: number
+        })
         .then(response => {
-window.location.reload();
+
 console.log(response.data);
 })
 .catch(error => {
@@ -124,4 +414,3 @@ console.error(error.response.data);
 
 }
 
-*@
