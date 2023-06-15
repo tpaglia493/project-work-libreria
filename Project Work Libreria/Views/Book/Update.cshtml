@@ -8,7 +8,7 @@
     
             <form asp-controller="Book" asp-action="Update" method="post" asp-route-id="@Model.Book.Id"  class="mt-2 py-3">
                 <div class="row login border borders rounded-5 bianco px-0 update">
-                    <div class="col-lg-6 col-md-8 col-sm-6  p-4">
+                    <div class="col-lg-6  p-4">
                         @Html.AntiForgeryToken()
                         <div class="mb-3">
                         <label asp-for="Book.Title" class="form-label bianco fw-bold fs-5 philosopher">Titolo</label>
@@ -56,21 +56,29 @@
 
                         <div class="row">
 
-                            <div class="col-6 mb-3 col-6">
+                            <div class="col-6 mb-3 ">
                                 <label asp-for="Book.Price" class="form-label bianco fw-bold fs-5 philosopher">Prezzo</label>
                                 <input asp-for="Book.Price" type="text" class="form-control" required>
                                 <span asp-validation-for="Book.Price" class="text-danger"></span>
                             </div>
 
-                            <div class="col-6 mb-3 col-6">
+                            <div class="col-6 mb-3 ">
                                 <label asp-for="Book.AvailableCopies" class="form-label bianco fw-bold fs-5 philosopher">Copie disponibili</label>
                                 <input asp-for="Book.AvailableCopies" type="text" class="form-control" required>
                                 <span asp-validation-for="Book.AvailableCopies" class="text-danger"></span>
                             </div>
                         </div>
+                <div>
+                    <div class="mb-3 col-6">
+                        <label asp-for="Book.SupplierPrice" class="form-label bianco fw-bold fs-5 philosopher">Prezzo d'acquisto</label>
+                        <input asp-for="Book.SupplierPrice" type="number"  class="form-control mt-1" required>
+                        <span asp-validation-for="Book.SupplierPrice" class="text-danger"></span>
+                    </div>
+                </div>
 
-                        
-                        @*   <button type="submit" class="btn btn-n">Salva</button>*@
+
+
+                @*   <button type="submit" class="btn btn-n">Salva</button>*@
                         <div class="col-6 text-center">
 
                             <div class="button">

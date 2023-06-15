@@ -5,30 +5,26 @@
 @{
 	int counter = 0;
 	int count = 0;
-
+	int bestSellerCounter = 0;
 	List<Book> bestSellers = new();
 	List<List<Book>> listLibriPerCategoria = new List<List<Book>>();
 	BookCategory cat = new();
 	List<BookCategory> listDiCat = new();
-	int totalQuantityPurchased = 0;
+	
+	List<Book> SortedList = new();
 	using(BookShopContext db = new BookShopContext())
 	{
 		foreach(Book book in Model)
 		{
-			foreach(PurchaseData data in book.PurchaseDatas)
-			{
-				int purchaseQuantity = data.Quantity;
-				totalQuantityPurchased += purchaseQuantity;
-
-				if (totalQuantityPurchased > 20 && !bestSellers.Contains(book))
-				{
+			
 					bestSellers.Add(book);
-				}
+	
+				
 
-			}
 		}
 
-	
+		SortedList =	bestSellers.OrderByDescending(b=> b.PurchaseQuantity).ToList();
+
 
 
 		List<BookCategory> listBookCategory = db.Categories.ToList();
@@ -245,12 +241,17 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row justify-content-center">
 
         <h1 class="philosopher">Best Seller</h1>
 
-		@foreach(Book book in bestSellers)
+		@foreach(Book book in SortedList)
 		{
+				++bestSellerCounter;
+				if (bestSellerCounter > 3)
+				{
+					break;
+				}
 
 		<div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
 			<img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
@@ -303,9 +304,9 @@
       
 
 <div class="container mt-5 mb-5">
+      
 
-
-    <div class="row justify-content-center">
+    <div class="row ">
             
             @foreach(List<Book> books in listLibriPerCategoria)
             {
@@ -314,56 +315,60 @@
                 List<Book> listaBook = books;
 
                     if(books.Count >0){
-               
-                <h1>@listDiCat[count].Name</h1>
+
+					<h1 class="philosopher">@listDiCat[count].Name</h1>
+					
                 }
-                
+                		
                 foreach(Book book in listaBook)
-                {   
-                    
-                    <div class="card col-3 mt-3 g-3 rounded-3 shadow borders">
-                        <img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
-                        <h1 class="text-center mt-2 philosopher">@book.Title</h1>
-                     
-
-                        <div class="text-center mb-3 mt-0 d-flex justify-content-around">
-
-                            <div class="mt-auto">
+                {
 
 
-                                <a href="@Url.Action("Details", "Book", new {id = book.Id})">
-                                    <button type="button" class="btn btn-n btn-sm dettagli philosopher">Dettagli</button>
-                                </a>
-                            </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card mt-3  rounded-3 shadow borders">
+                            <img src="@book.ImgSource" class="mt-3 mx-1 rounded-3" />
+                            <h1 class="text-center mt-2 philosopher">@book.Title</h1>
 
-                            <div class="mt-auto">
 
-                                <div class="like">
-                                    <div class="icon">
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M2.9219 12.4463C1.8489 9.0963 3.1039 4.9313 6.6209 3.7993C8.4709 3.2023 10.7539 3.7003 12.0509 5.4893C13.2739 3.6343 15.6229 3.2063 17.4709 3.7993C20.9869 4.9313 22.2489 9.0963 21.1769 12.4463C19.5069 17.7563 13.6799 20.5223 12.0509 20.5223C10.4229 20.5223 4.6479 17.8183 2.9219 12.4463Z" />
-                                        </svg>
+                            <div class="text-center mb-3 mt-0 d-flex justify-content-around">
+
+                                <div class="mt-auto">
+
+
+                                    <a href="@Url.Action("Details", "Book", new {id = book.Id})">
+                                        <button type="button" class="btn btn-n btn-sm dettagli philosopher">Dettagli</button>
+                                    </a>
+                                </div>
+
+                                <div class="mt-auto">
+
+                                    <div class="like">
+                                        <div class="icon">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M2.9219 12.4463C1.8489 9.0963 3.1039 4.9313 6.6209 3.7993C8.4709 3.2023 10.7539 3.7003 12.0509 5.4893C13.2739 3.6343 15.6229 3.2063 17.4709 3.7993C20.9869 4.9313 22.2489 9.0963 21.1769 12.4463C19.5069 17.7563 13.6799 20.5223 12.0509 20.5223C10.4229 20.5223 4.6479 17.8183 2.9219 12.4463Z" />
+                                            </svg>
+                                        </div>
+                                        <div class="shadow"></div>
+                                        <div class="number">@book.LikeQuantity</div>
+                                        <div class="bookId d-none">@book.Id</div>
                                     </div>
-                                    <div class="shadow"></div>
-                                    <div class="number">@book.LikeQuantity</div>
-                                    <div class="bookId d-none">@book.Id</div>
+
+                                </div>
+
+                                <div class="mt-auto">
+                                    <form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-1">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-r btn-sm dettagli philosopher">
+                                            Acquista
+                                        </button>
+                                    </form>
                                 </div>
 
                             </div>
-
-                            <div class="mt-auto">
-                                <form asp-controller="PurchaseData" asp-action="Create" asp-route-id="@book.Id" method="get" class="mt-1">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-r btn-sm dettagli philosopher">
-                                        Acquista
-                                    </button>
-                                </form>
-                            </div>
-                            
+                            <div class="text-center fw-bold fs-5 mb-2">@book.Price.ToString("n2")&euro; </div>
                         </div>
-
                     </div>
-
+                    
 
 
                 }
