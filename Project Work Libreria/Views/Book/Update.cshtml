@@ -68,9 +68,17 @@
                                 <span asp-validation-for="Book.AvailableCopies" class="text-danger"></span>
                             </div>
                         </div>
+                <div>
+                    <div class="mb-3 col-6">
+                        <label asp-for="Book.SupplierPrice" class="form-label bianco fw-bold fs-5 philosopher">Prezzo d'acquisto</label>
+                        <input asp-for="Book.SupplierPrice" type="number"  class="form-control mt-1" required>
+                        <span asp-validation-for="Book.SupplierPrice" class="text-danger"></span>
+                    </div>
+                </div>
 
-                        
-                        @*   <button type="submit" class="btn btn-n">Salva</button>*@
+
+
+                @*   <button type="submit" class="btn btn-n">Salva</button>*@
                         <div class="col-6 text-center">
 
                             <div class="button">

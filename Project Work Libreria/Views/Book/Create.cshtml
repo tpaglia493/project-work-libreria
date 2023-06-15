@@ -57,17 +57,25 @@
                     <div class="row">
 
                         <div class="mb-3 col-6">
-                            <label asp-for="Book.Price" class="form-label bianco fw-bold fs-5 philosopher">Prezzo</label>
-                            <input asp-for="Book.Price" type="text" class="form-control mt-1" required>
+                            <label asp-for="Book.Price" class="form-label bianco fw-bold fs-5 philosopher">Prezzo al pubblico</label>
+                            <input asp-for="Book.Price" value="0" type="number" class="form-control mt-1" required>
                             <span asp-validation-for="Book.Price" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3 col-6">
                             <label asp-for="Book.AvailableCopies" class="form-label bianco fw-bold fs-5 philosopher">Quantità in magazzino</label>
-                            <input asp-for="Book.AvailableCopies" value="0" type="text" class="form-control mt-1" required>
+                            <input asp-for="Book.AvailableCopies" value="0" type="number" class="form-control mt-1" required>
                             <span asp-validation-for="Book.AvailableCopies" class="text-danger"></span>
                         </div>
                     </div>
+
+                <div>
+                    <div class="mb-3 col-6">
+                        <label asp-for="Book.SupplierPrice" class="form-label bianco fw-bold fs-5 philosopher">Prezzo d'acquisto</label>
+                        <input asp-for="Book.SupplierPrice" type="number" value="0" class="form-control mt-1" required>
+                        <span asp-validation-for="Book.SupplierPrice" class="text-danger"></span>
+                    </div>
+                </div>
                 
 
                
