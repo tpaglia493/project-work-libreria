@@ -489,8 +489,8 @@ button {
     cursor: pointer;
     border: none;
     color: #ff800c;
+    background-color: #ff800c;
     transition: box-shadow 400ms ease-in-out, color 400ms ease-in-out;
-
 }
 
 /*bottoni meno larghi*/
