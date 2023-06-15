@@ -80,7 +80,7 @@ namespace Project_Work_Libreria.Controllers
         {
             using (BookShopContext db = new BookShopContext())
             {
-                Book? bookToModify = db.Book.Where(book => book.Id == id).FirstOrDefault();
+                Book? bookToModify = db.Book.Where(book => book.Id == id).Include(b => b.Category).FirstOrDefault();
                 Book_ListBookCategories model = new Book_ListBookCategories();
                 model.Book = bookToModify;
                 List<BookCategory> bookCategories = db.Categories.ToList();
@@ -124,13 +124,14 @@ namespace Project_Work_Libreria.Controllers
 
                 if (bookToModify != null)
                 {
-
+                    BookCategory categoryFromInput = db.Categories.Where(c => c.Id == modifiedBook.Book.BookCategoryId).FirstOrDefault();
                     bookToModify.Title = modifiedBook.Book.Title;
                     bookToModify.Author = modifiedBook.Book.Author;
                     bookToModify.Description = modifiedBook.Book.Description;
                     bookToModify.ImgSource = modifiedBook.Book.ImgSource;
                     bookToModify.Price = modifiedBook.Book.Price;
                     bookToModify.SupplierPrice = modifiedBook.Book.SupplierPrice;
+                    bookToModify.Category = categoryFromInput;
 
                     db.SaveChanges();
                     return RedirectToAction("Admin");
