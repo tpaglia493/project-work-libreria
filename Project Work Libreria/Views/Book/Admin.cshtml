@@ -47,7 +47,7 @@
                         ++counter;
                         <tr>
                             <th scope="row">@dataModel.Book.Id</th>
-                            <td class="mt-5"><img class="img-fluid img_square" width="100" height="100" src="@dataModel.Book.ImgSource" alt="Immagine @dataModel.Book.Title"></td>
+                            <td><img class="img-fluid img_square" width="100" height="100" src="@dataModel.Book.ImgSource" alt="Immagine @dataModel.Book.Title"></td>
                             <td>@dataModel.Book.Title</td>
                             <td>@dataModel.Book.Author</td>
                             <td>@dataModel.Book.Category.Name</td>
@@ -63,22 +63,22 @@
                                 @if (dataModel.Book.AvailableCopies <= 10)
                                 {
 
-                                    <div class="mt-3">
-                                        <i class="fa-solid fa-skull-crossbones fa-beat bigger-icons" style="color: #f21c1c;"></i>
+                                    <div class="mt-3 " style="font-size:40px">
+                                        <i class="fa-solid fa-skull-crossbones fa-beat " style="color: #f21c1c;"></i>
                                     </div>
 
                                 }
                                 else if (dataModel.Book.AvailableCopies <= 30)
                                 {
-                                    <div class="mt-3">
-                                        <i class="fa-solid fa-triangle-exclamation fa-shake bigger-icons" style="color: #f9b115;"></i>
+                                    <div class="mt-3" style=" font-size:40px">
+                                        <i class="fa-solid fa-triangle-exclamation fa-shake " style="color: #f9b115;"></i>
                                     </div>
 
                                 }
                                 else if (dataModel.Book.AvailableCopies > 30)
                                 {
-                                    <div class="mt-3">
-                                        <i class="fa-solid fa-circle-check bigger-icons" style="color: #51df2a;"></i>
+                                    <div class="mt-3" style=" font-size:40px">
+                                        <i class="fa-solid fa-circle-check " style="color: #51df2a;"></i>
                                     </div>
                                 }
                             </td>
