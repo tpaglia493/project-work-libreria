@@ -32,11 +32,12 @@
                         <th class="col indici philosopher" scope="col">id</th>
                         <th class="col indici philosopher" scope="col">Immagine</th>
                         <th class="col indici philosopher" scope="col">Titolo</th>
-                        <th class="col-2 indici philosopher" scope="col">Autore</th>
-                        <th class="col-2 indici philosopher" scope="col">Categoria</th>
-                        <th class="col-3 indici philosopher" scope="col">Descrizione</th>
-                        <th class="col-2 indici philosopher" scope="col">Prezzo</th>
-                        <th class="col-2 indici philosopher" scope="col">Copie disponibili</th>
+                        <th class="col indici philosopher disappear-on-media" scope="col">Autore</th>
+                        <th class="col indici philosopher disappear-on-media" scope="col">Categoria</th>
+              
+                        <th class="col indici philosopher disappear-on-media" scope="col">Prezzo</th>
+                        <th class="col indici philosopher" scope="col">Copie disponibili</th>
+                        <th class="col indici philosopher" scope="col">Stato Magazzino</th>
                         <th class="col indici philosopher" scope="col">Azioni</th>
                     </tr>
                 </thead>
@@ -46,31 +47,40 @@
                         ++counter;
                         <tr>
                             <th scope="row">@dataModel.Book.Id</th>
-                            <td><img class="img-fluid img_square" width="100" height="100" src="@dataModel.Book.ImgSource" alt="Immagine @dataModel.Book.Title"></td>
+                            <td class="mt-5"><img class="img-fluid img_square" width="100" height="100" src="@dataModel.Book.ImgSource" alt="Immagine @dataModel.Book.Title"></td>
                             <td>@dataModel.Book.Title</td>
                             <td>@dataModel.Book.Author</td>
                             <td>@dataModel.Book.Category.Name</td>
                          
                             <td>@dataModel.Book.Price.ToString("n2") €</td>
-                            <td>@dataModel.Book.AvailableCopies
+                            <td>@dataModel.Book.AvailableCopies</td>
+                            <td>
 
-                             
-                             
                               
-                            
-                                @if(dataModel.Book.AvailableCopies <= 10)
+                                
+                                
+                           
+                                @if (dataModel.Book.AvailableCopies <= 10)
                                 {
-                                    <button class="btn btn-danger pe-none mt-0">ATTENZIONE</button>
+
+                                    <div class="mt-3">
+                                        <i class="fa-solid fa-skull-crossbones fa-beat bigger-icons" style="color: #f21c1c;"></i>
+                                    </div>
+
                                 }
                                 else if (dataModel.Book.AvailableCopies <= 30)
                                 {
-                                    <button class="btn btn-warning pe-none mt-0">In esaurimento</button>
-                                            }
+                                    <div class="mt-3">
+                                        <i class="fa-solid fa-triangle-exclamation fa-shake bigger-icons" style="color: #f9b115;"></i>
+                                    </div>
+
+                                }
                                 else if (dataModel.Book.AvailableCopies > 30)
                                 {
-                                    <button class="btn btn-success pe-none mt-0">Vai alla grande</button>
+                                    <div class="mt-3">
+                                        <i class="fa-solid fa-circle-check bigger-icons" style="color: #51df2a;"></i>
+                                    </div>
                                 }
-
                             </td>
 
                             <!------------------------------------------------ AZIONI -------------------------------------------------->
@@ -199,7 +209,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                       
+                    
                     
                     </tr>
                 </tbody>
