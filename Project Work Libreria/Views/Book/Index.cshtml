@@ -15,17 +15,11 @@
 	{
 		foreach(Book book in Model)
 		{
-			foreach(PurchaseData data in book.PurchaseDatas)
-			{
-				int purchaseQuantity = data.Quantity;
-				totalQuantityPurchased += purchaseQuantity;
-
-				if (totalQuantityPurchased > 20 && !bestSellers.Contains(book))
-				{
+			
 					bestSellers.Add(book);
-				}
+					bestSellers.OrderByDescending(b=> b.PurchaseQuantity).ToList();
+				
 
-			}
 		}
 
 	
