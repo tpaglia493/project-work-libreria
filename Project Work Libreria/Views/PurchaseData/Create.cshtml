@@ -18,7 +18,7 @@
             </div>
 
             <div id="border" class="col-lg-6 col-md-8 col-sm-6 m-auto my-3 ps-5">
-                <h1 class="mb-3">Riepilogo acquisto</h1>
+                <h1 class="mb-3 philosopher">Riepilogo acquisto</h1>
                 <div class=" p-3">
                   <form asp-controller="PurchaseData" asp-action="Create" method="post" asp-route-id="@Model.Book.Id" class="mt-2  mb-2 py-3">
                     @Html.AntiForgeryToken()
@@ -40,7 +40,8 @@
                             Autore:
                         </h3>
                         <p>@Model.Book.Author</p>
-                        <h3>
+
+                        <h3 class ="philosopher">
                             Prezzo:
                         </h3>
                         <p> @Model.Book.Price.ToString("n2")</p>
@@ -48,7 +49,7 @@
 
 
 
-                        <button type="submit" class="btn purchase px-0 btn-n ">Acquista</button>
+                        <button type="submit" class="btn purchase px-0 btn-n">Acquista</button>
                 </form>
                 </div>
             </div>
